@@ -1,0 +1,12 @@
+/* Create a function named roundNumber that:
+Takes two parameters, num and precision.
+Returns the number rounded to the specified precision (number of decimal places).
+Call the function with 19.56789 and 2.
+Print the result using console.log().
+
+Hint: Use .toFixed().
+
+*/
+// const roundNumber = (num, precision) => parseFloat(num.toFixed(precision));
+const roundNumber = (num, precision) => Number(num.toFixed(precision));
+console.log(roundNumber(19.56789, 2));
