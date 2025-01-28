@@ -11,11 +11,10 @@ const calculateAverageUntilZero = () => {
     let array =[];
     let sum = 0;
     while (input !=0){
-        input = Number(prompt('Enter a number: '));
+        input = Number(prompt('Enter a number, enter 0 to end loop: '));
         array.push(input);
         sum += input;
     }
-    console.log('Length of array: ', array.length);
     console.log('The average of all entered numbers is ', (sum/(array.length-1)).toFixed(2));
 }
 calculateAverageUntilZero();

@@ -9,3 +9,15 @@ Write a function named createWordPyramid:
     code
  */
 const prompt=require('prompt-sync')();
+
+const createWordPyramid=() =>{
+    let word = prompt('Enter a word: ');
+    let next_layer=[];
+    console.log('length',word.length);
+    for (i of word){
+        next_layer.push(i);
+        console.log(next_layer.join(''));
+        }
+}
+
+createWordPyramid();

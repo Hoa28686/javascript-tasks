@@ -15,7 +15,7 @@ const buildGroceryList=()=>{
     }
     console.log('Grocery list:')
     for(i of array) {
-        console.log(`-> ${i}`);
+        console.log(`• ${i}`);
     }
 }
 

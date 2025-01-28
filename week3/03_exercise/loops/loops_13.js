@@ -5,6 +5,15 @@ Write a function named validatePassword:
 - If incorrect, prompt the user again with: "Try again!".
  */
 const prompt=require('prompt-sync')();
-const validatePassword=(){
-    
+
+const validatePassword=() => {
+    let password = prompt('Enter password: ');
+    while (password != "correct123") {
+        password = prompt('Try again! ');
+    }
+    if (password == "correct123"){
+        console.log("Access granted!");
+    }
 }
+
+validatePassword();

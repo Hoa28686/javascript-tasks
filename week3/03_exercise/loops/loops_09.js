@@ -8,6 +8,6 @@ const sumFromOneToHundred = () =>{
     for (i=0; i<=100; i++){
         sum+=i;
     }
-    console.log('The sum is ', sum);
+    console.log('The sum of all numbers from 1 to 100 is', sum);
 }
 sumFromOneToHundred();
