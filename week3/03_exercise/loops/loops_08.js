@@ -7,3 +7,15 @@ Write a function named findMinMax:
 - The largest number.
 Display the results in the console. 
 */
+const prompt=require('prompt-sync')();
+const finMinMax = () => {
+    let count = prompt('How many numbers they want to input: ');
+    let array=[];
+    for (i=1; i<=count; i++){
+        let input = prompt(`${i}: `);
+        array.push(input);
+    }
+    console.log('The smallest number: ', Math.min(...array));
+    console.log('The largest number: ', Math.max(...array));
+}
+finMinMax();

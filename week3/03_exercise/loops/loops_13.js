@@ -4,3 +4,7 @@ Write a function named validatePassword:
 - If the password is "correct123", log: "Access granted!" and exit the loop.
 - If incorrect, prompt the user again with: "Try again!".
  */
+const prompt=require('prompt-sync')();
+const validatePassword=(){
+    
+}

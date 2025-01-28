@@ -8,3 +8,4 @@ Write a function named createWordPyramid:
     cod
     code
  */
+const prompt=require('prompt-sync')();
