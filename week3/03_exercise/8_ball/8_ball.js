@@ -1,6 +1,7 @@
 function magic8Ball(){
     let question = prompt('Ask a yes or no quesstion: ');
     console.log(`You asked: ${question}`);
+    alert(`The answer is ${answer()}`);
 }
 
 magic8Ball();
@@ -16,28 +17,25 @@ function answer(){
             return "Yes, definitely!";
             break;
         case 2:
-            console.log("It is certain.");
+            return "It is certain.";
             break;
         case 3:
-            console.log("Reply hazy, try again.");
+            return "Reply hazy, try again.";
             break;
         case 4:
-            console.log("Ask again later.");
+            return "Ask again later.";
             break;
         case 5:
-            console.log("Better not tell you now.");
+            return "Better not tell you now.";
             break;
         case 6:
-            console.log("My sources say no.");
+            return "My sources say no.";
             break;
         case 7:
-            console.log("Outlook not so good.");
+            return "Outlook not so good.";
             break;
         case 8:
-            console.log("Signs point to yes.");
+            return "Signs point to yes.";
             break;
     }
 }
-alert(answer());
-
-
