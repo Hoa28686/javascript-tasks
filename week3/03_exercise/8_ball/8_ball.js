@@ -1,3 +1,11 @@
+function magic8Ball(){
+    let question = prompt('Ask a yes or no quesstion: ');
+    console.log(`You asked: ${question}`);
+    alert(`The answer is ${answer()}`);
+}
+
+magic8Ball();
+
 function random_number(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -31,13 +39,3 @@ function answer(){
             break;
     }
 }
-
-function magic8Ball(){
-    let question = prompt('Ask a yes or no quesstion: ');
-    console.log(`You asked: ${question}`);
-    answer();
-    alert(`The answer is ${answer()}`);
-}
-
-magic8Ball();
-
