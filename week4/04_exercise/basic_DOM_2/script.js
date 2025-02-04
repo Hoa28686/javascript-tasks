@@ -7,16 +7,20 @@ Write JavaScript to:
 - Clear the input field after adding the fruit.
 */
 
+const fruit_list = document.querySelector('#fruitList')
+const input=document.querySelector('#fruitInput');
 
+const button=document.querySelector('#addFruitBtn')
 
-
-
-function add_input() {
-    const input = document.getElementById('fruitInput').value;
-    const List = document.getElementById('fruitList');
-    let element = document.createElement('li');
-    element.innerText = input;
-    List.appendChild(element);
-
+function add_list() {
+    const new_fruit=document.createElement('li');
+    new_fruit.textContent = input.value;
+    fruit_list.append(new_fruit);
+    input.value='';
 
 }
+
+
+button.addEventListener('click', add_list)
+
+
