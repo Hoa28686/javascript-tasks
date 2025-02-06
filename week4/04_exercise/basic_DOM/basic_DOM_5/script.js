@@ -6,5 +6,12 @@ Create an HTML file with:
 
 Write JavaScript to:
 - Change the background color to a random color when the button is clicked.
-- Update the paragraph’s text color to match the user’s input valu
+- Update the paragraph’s text color to match the user’s input value
 */
+const background=document.querySelector('#background');
+const input=document.querySelector('#input');
+const p=document.querySelector('#p');
+
+const randomColor=()=>{
+    return "#"+Math.floor
+}

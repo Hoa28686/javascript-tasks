@@ -8,10 +8,6 @@ const button= document.querySelector('#button');
 
 
 
-function show(){
-    para.style.display ="none";
-}
-// para.style.display ="none";
-
-
-button.addEventListener('click', show);
+button.addEventListener('click', () =>{
+    (para.style.display ==="none") ? (para.style.display ="block") : (para.style.display ="none"); 
+})

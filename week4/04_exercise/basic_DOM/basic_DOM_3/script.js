@@ -7,8 +7,11 @@ Write JavaScript to:
 const input=document.querySelector('#live_input');
 const display= document.querySelector('#displayText');
 
-function show_live(event) {
-    display.textContent=`You typed: ${event.target.value};`
+// function show_live(event) {
+//     display.textContent=`You typed: ${event.target.value}`;
+// }
+function show_live() {
+    display.textContent=`You typed: ${input.value}`;
 }
 
 input.addEventListener('input',show_live);
