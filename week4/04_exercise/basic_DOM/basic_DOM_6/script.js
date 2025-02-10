@@ -8,10 +8,12 @@ Write JavaScript to:
 const name=document.querySelector('#name');
 const email=document.querySelector('#email');
 const button=document.querySelector('button');
+const message=document.querySelector('span')
 function noSubmit(){
-    if (name==="" || email===""){
+    if (name.value ==="" || email.value===""){
         event.preventDefault();
-        alert("Enter all required fields.");
+        message.style.display="block";
+        // alert("Enter all required fields.");
     }
 }
 button.addEventListener('click', noSubmit);
