@@ -1,34 +1,39 @@
 const type=document.querySelector('#type');
-const topping=document.querySelector('.topping');
-const extra=document.querySelector('.extra');
+const topping=document.querySelectorAll('.topping');
+const extra=document.querySelectorAll('.extra');
 const totalPrice=document.querySelector('#totalPrice');
 const totalDisplay=document.querySelector('#totalPriceDisplay');
-// console.log(type.value);
 
-console.log(topping.value);
-
-console.log(extra.value);
-// console.log(totalDisplay.value);
-total=0;
-function selection(){
-    totalPrice.textContent=totalDisplay.textContent= type.value +"€";
+let sum1=5;
+let sum2=0;
+function update_sum(){
+    totalPrice.textContent=totalDisplay.textContent = sum1+sum2+"€";
+    console.log(sum1+sum2);
 }
-type.addEventListener("change", selection);
+function pancake_type(){
+    sum1= Number(type.value);
+    update_sum();
+}
+type.addEventListener("change",pancake_type);
 
-// for (i=0, i<topping.length;i++){
-//     if (topping[i].checked)
-// }
-// topping.addEventListener('click', ()=>{
-//     if (topping.checked==true){
-//         total+=topping.value;
-//         totalPrice.textContent=totalDisplay.textContent= total +"€"
+topping.forEach(i=>{
+    i.addEventListener('change', ()=>{
+        if(i.checked){
+            sum2+=Number(i.value);
+        } else{
+            sum2-=Number(i.value);
+        }
+        update_sum();
+})})
 
-//     };
-// });
-// topping.addEventListener('click', ()=>{
-//     let checked= document.querySelector('input[type="checkbox"]:checked');
-    
-//     total=total+checked.value;
-//     console.log(total);
-// })
+extra.forEach(i=>{
+    i.addEventListener('change', ()=>{
+        if(i.checked){
+            sum2+=Number(i.value);
+        } else{
+            sum2-=Number(i.value);
+        }
+        update_sum();
+})})
+
 

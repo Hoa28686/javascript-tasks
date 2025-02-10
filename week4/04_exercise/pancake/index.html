@@ -7,8 +7,10 @@
   </head>
   <body>
     <div class="container">
-      <div class="image-container">
-        <img src="pancake.jpeg" alt="Delicious pancakes" />
+      <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+          <source src="pancake.mp4" type="video/mp4" />
+        </video>
         <div class="price-banner"><span id="totalPrice">5€</span></div>
       </div>
 
@@ -21,7 +23,7 @@
           <option value="6">Chocolate - 6€</option>
           <option value="7">Blueberry - 7€</option>
         </select>
-
+        <div id="top">
         <h3>Select your toppings (1€ each):</h3>
         <label><input type="checkbox" class="topping" value="1" /> Nuts</label>
         <label
@@ -38,7 +40,7 @@
           ><input type="checkbox" class="extra" value="3" /> Ice Cream -
           3€</label
         >
-
+      </div>
         <h3>Total Price: <span id="totalPriceDisplay">5€</span></h3>
       </div>
     </div>
