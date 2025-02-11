@@ -8,7 +8,7 @@ let sum1=5;
 let sum2=0;
 function update_sum(){
     totalPrice.textContent=totalDisplay.textContent = sum1+sum2+"€";
-    console.log(sum1+sum2);
+    // console.log(sum1+sum2);
 }
 function pancake_type(){
     sum1= Number(type.value);
