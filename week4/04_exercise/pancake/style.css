@@ -90,19 +90,9 @@ body {
     border-radius:5px;
   }
   #totalPrice, #totalPriceDisplay { 
-    transform: translateY(-50%);
-    animation: slideup 2s infinite;
-  }
-  
+    animation: bigger 5s infinite;
 
-  @keyframes slideup{
-    0%, 10%{
-      transform:translateY(0%);
-    }
-    15%, 25%{
-      transform:translateY(-25%);
-    }
-    /* 30%, 45%{
-      transform:translateY(0%);
-    } */
+  }
+  @keyframes bigger {
+    50% {font-size: 40px;}
   }
