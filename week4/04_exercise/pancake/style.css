@@ -91,6 +91,7 @@ body {
     transform: translateY(-50%);
     animation: slideup 2s infinite;
   }
+  
 
   @keyframes slideup{
     0%, 10%{
