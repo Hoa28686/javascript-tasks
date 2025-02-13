@@ -9,7 +9,7 @@ let sum1=5;
 let sum2=0;
 function update_sum(){
     totalPrice.textContent=totalDisplay.textContent = sum1+sum2+"€";
-    // console.log(sum1+sum2);
+    console.log(sum1+sum2);
 }
 
 const print=['Classic - 5€'];
@@ -21,23 +21,28 @@ pancake_form.addEventListener('change', (event)=>{
         print[0]= type.selectedOptions[0].textContent;
     }
     
-    if ((target.class==='topping') || (target.class==='extra')||(target.class==='delivery')){
-        let price= Number(target.dataset.price);
-        let name =target.parentNode.textContent.replace(/\s+/g,' ');
+    if ((target.classList.contains('topping')) || (target.classList.contains('extra'))){
+        const price= target.dataset.price;
+        const text =target.parentNode.textContent.replace(/\s+/g,' ');
         if (target.checked){
-            array.push({name:name, value:price});
+            array.push({name:text, value:price});
         } else {
-             const index= array.findIndex(i => i.name==name)
+            const index= array.findIndex(i => i.name==text)
             array.splice(index,1);
         } 
-
-        array.forEach(i=> {console.log(i.name)})
+        sum2=array.reduce((sum2,i)=> sum2+Number(i.value),0);
+        
+        
+        
     }
-    // sum2=array.value.reduce((sum2,i)=> sum2+i,0)
-    update_sum();
     
-    // console.log(print);
+    update_sum();
+
+   
+   
 })
+
+
 
 // seeBtn.addEventListener('click',()=>{
 //     summary.appendChild()
