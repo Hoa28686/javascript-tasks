@@ -63,13 +63,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-transform: lowercase;
+    text-transform: capitalize;
     
   }
 
-  #animalList li::first-letter{
-    text-transform: uppercase;
-  }
+
   .remove-btn {
     background-color: #dc3545;
     color: white;

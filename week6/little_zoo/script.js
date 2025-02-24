@@ -22,7 +22,7 @@ display()
 addBtn.addEventListener('click', addAnimal);
 
 function addAnimal() {
-    animals.push(add.value);
+    animals.push(add.value.toLowerCase());
     add.value=''; //clear input field
     display();
 }
