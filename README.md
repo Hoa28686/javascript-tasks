@@ -26,5 +26,5 @@
   - [x] pancake
 
 - **week_05:**
-  - [ ] array
+  - [x] array
   - [ ] pancake2
