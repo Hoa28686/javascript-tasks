@@ -43,10 +43,18 @@ function display(animals){
         btn.textContent='x';
         btn.style.lineHeight='10px';
         li.appendChild(btn);
-        // btn.addEventListener('click', ()=>{ul.removeChild(li)});
     })
 
 }
+
+ul.addEventListener('click', removeAnimal);
+function removeAnimal(e){
+    if (e.target.classList.contains('deleteBtn')){
+        let li=e.target.parentElement;
+        ul.removeChild(e.target.parentElement);
+    }
+}
+
 
 display(animals)
 
@@ -57,7 +65,7 @@ addBtn.addEventListener('click', addAnimal);
 function addAnimal() {
     animals.push(addInput.value.trim().toLowerCase());
     addInput.value=''; //clear input field
-    display();
+    display(animals);
 }
 
 //4. filter animal by type
@@ -94,7 +102,6 @@ function searchAnimal(){
 }
 
 //6. remove animal from the list
-
 
 //7. sort animal from the list
 sortBtn.addEventListener('click', sortAnimals);
