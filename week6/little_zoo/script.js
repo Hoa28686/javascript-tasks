@@ -10,7 +10,7 @@ let animals=['Fox', 'Bear', 'Eagle'];
 function display(){
     ul.innerHTML='List of animals in our zoo: '; //use innerHTML instead of textContent so the list is not repeated
     animals.forEach(a=> {
-        const li=document.    createElement('li');
+        const li=document.createElement('li');
         li.textContent=a;
         ul.append(li);
     })
