@@ -2,8 +2,15 @@
 Create an object `weather` that contains properties `temperature`, `humidity`, and `condition` (e.g., "Sunny", "Rainy").
 Write a function that logs `"Take an umbrella!"` if it's rainy.
 */
+const weather={temperature: 25, humidity:50,condition:'rainy'
+}
+const weatherCheck=(weather)=>{
+    if(weather.condition=='rainy'){
+        console.log("Take an umbrella!");
+    }
+}
+weather(weather);
 
-// Your code here
 
 /* Task 2
 Define an object named `shoppingCart` that contains an array of items.
