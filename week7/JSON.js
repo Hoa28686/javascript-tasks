@@ -117,8 +117,8 @@ Write a function `totalCartValue(jsonString)` that:
 */
 
 console.log('9. ')
-function totalCartValue(shoppingString){
-    const shoppingObj=JSON.parse(shoppingString);
+function totalCartValue(jsonString){
+    const shoppingObj=JSON.parse(jsonString);
     const sum = shoppingObj.items.reduce((total,item)=>total+item.price,0);
     return sum;
 
