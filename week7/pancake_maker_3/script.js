@@ -1,3 +1,4 @@
+const pancakeForm=document.querySelector('#pancakeForm');
 const bannerPrice = document.querySelector("#totalPrice");
 const totalDisplay = document.querySelector("#totalPriceDisplay");
 const seeBtn = document.querySelector("#seeOrder");
@@ -7,6 +8,7 @@ let sum1 = 5;
 let sum2 = 0;
 let sum3 = 0;
 let sum4 = 0;
+let finalSum=5;
 
 pancakeForm.addEventListener("change", (e) => {
   pancakeType(e);
@@ -15,11 +17,11 @@ pancakeForm.addEventListener("change", (e) => {
   extra(e);
   delivery(e);
 });
-seeBtn.addEventListener("click", summary);
+seeBtn.addEventListener("click", createOrder);
 
 function update_sum() {
-  bannerPrice.textContent = totalDisplay.textContent =
-    sum1 + sum2 + sum3 + sum4 + "€";
+  finalSum = sum1+sum2+sum3+sum4;
+  bannerPrice.textContent = totalDisplay.textContent = finalSum+"€";
 }
 
 // Select pancake type
@@ -88,16 +90,50 @@ function delivery(e) {
     update_sum();
   }
 }
-
+let id='';
 //summarize order
-function summary() {
-  const summary = `
-  Customer name:${customerName.value.trim()}<br>
-  Pancake type: ${type}<br>
-  Topping: ${toppingArr.map((t) => t.name).join(", ")} ${sum2}€<br>
-  Extra: ${extraArr.map((e) => e.name).join(", ")} <br>
-  ${deli.name}`;
-  summaryText.innerHTML = summary;
-}
+// function summary() {
+//   const summary = `
+//   Order ID: ${id}<br>
+//   Customer name: ${customerName.value.trim()}<br>
+//   Pancake type: ${type}<br>
+//   Topping: ${toppingArr.map((t) => t.name).join(", ")} ${sum2}€<br>
+//   Extra: ${extraArr.map((e) => e.name).join(", ")} 
+//   ${deli.name}<br>
+//   Total: ${finalSum}€`;
+//   summaryText.innerHTML = summary;
+// }
+// function Order(id,customerName, selectedPancake, toppings, extras, deliveryMethod, totalPrice, status){
+//   this.id=id;
+//   this.customerName=customerName;
+//   this.selectedPancake=selectedPancake;
+//   this.toppings=toppings;
+//   this.extras=extras;
+//   this.deliveryMethod=deliveryMethod;
+//   this.totalPrice=totalPrice;
+//   this.status=status;
+// }
 
-let 
+const orders=[];
+
+function createOrder(){
+  const order1={
+    'Order ID': Date.now(),
+    'Customer Name':customerName.value.trim(),
+    'Selected Pancake':type,
+    'Toppings':toppingArr,
+    'Extras':extraArr,
+    'Delivery Method':deli.name,
+    'Total Price': finalSum,
+    'Status':'waiting'
+  }
+  orders.push(order1);
+  localStorage.setItem('orders',JSON.stringify(orders));
+  
+}
+createOrder();
+// All Orders page
+
+
+// seeAll.addEventListener('click', createOrder);
+
