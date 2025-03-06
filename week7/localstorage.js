@@ -67,6 +67,33 @@ Write a function `getFromLocalStorage(key)` that:
 */
 
 console.log("5. ");
+function getFromLocalStorage(key){
+    const value=localStorage.getItem(key);
+    // if value exists
+    if(value){
+        try {
+            const valueObj=JSON.parse(value);
+            console.log(`Retrieved value of '${key}':`,valueObj);
+        }
+        catch(err){
+            console.log(`Retrieved value of '${key}':`,value);
+        }
+    } else{
+        console.log(`No value found for '${key}'.`);
+    }
+}
+localStorage.setItem('testTask5',4);
+localStorage.setItem('testTask5_1','string');
+localStorage.setItem('testTask5_2',true);
+
+getFromLocalStorage('key');
+getFromLocalStorage('testTask5');
+getFromLocalStorage('testTask5_1');
+getFromLocalStorage('testTask5_2');
+getFromLocalStorage('books');
+getFromLocalStorage('counter');
+getFromLocalStorage('my_laptop');
+getFromLocalStorage('shoppingList');
 
 /* Task 6
 Create an object `userProfile` with:
@@ -177,7 +204,7 @@ console.log("10. ");
 function clearLocalStorage(){
     localStorage.clear();
 }
-clearLocalStorage();
+// clearLocalStorage();
 if (localStorage.length===0){
     console.log('LocalStorage is empty.');
 }else{
