@@ -78,7 +78,19 @@ Save it to LocalStorage.
 Retrieve and update the `theme` property to `"dark mode"`, then log the updated object.
 */
 
+
 console.log("6. ");
+const userProfile={
+    username:'task6',
+    email:'task6@gmail.com',
+    preferences:{theme:'light mode', notifications:'system will automatically update at 2 a.m.'}
+};
+
+localStorage.setItem('userProfile',JSON.stringify(userProfile));
+const profileObj=JSON.parse(localStorage.getItem('userProfile'));
+profileObj.preferences.theme='dark mode';
+console.log(profileObj);
+
 
 /* Task 7
 Define an object `shoppingList` with an array `items` (strings).
@@ -91,6 +103,19 @@ Write a function `addItemToList(item)` that:
 */
 
 console.log("7. ");
+const shoppingList={
+    items:['fish','orange','kale','rice']
+};
+localStorage.setItem('shoppingList',JSON.stringify(shoppingList));
+
+function addItemToList(item){
+    const listObj=JSON.parse(localStorage.getItem('shoppingList'));
+    listObj.items.push(item);
+    localStorage.setItem('shoppingList', JSON.stringify(listObj));
+    console.log(listObj);
+}
+
+addItemToList('potato');
 
 /* Task 8
 Create a counter object with:
@@ -103,7 +128,18 @@ Write a function `incrementCounter()` that:
 - Logs the new count.
 */
 
-console.log("8. ");
+console.log("8. New count: ");
+const counter={count:0};
+localStorage.setItem('counter', JSON.stringify(counter));
+function incrementCounter(){
+    const counterObj=JSON.parse(localStorage.getItem('counter'));
+    counterObj.count+=1;
+    localStorage.setItem('counter', JSON.stringify(counterObj));
+    console.log(counterObj.count);
+}
+incrementCounter();
+incrementCounter();
+
 
 /* Task 9
 Create an array `tasks`, where each task is an object (`id`, `description`, `completed`).
@@ -116,9 +152,34 @@ Write a function `markTaskComplete(taskId)` that:
 */
 
 console.log("9. ");
+
+const tasks = [
+    { id: 1, description: 'Go to school', completed: false },
+    { id: 2, description: 'Cook dinner', completed: false },
+    { id: 3, description: 'Do task 9 - localStorage', completed: false }
+];
+
+localStorage.setItem('tasks', JSON.stringify(tasks));
+function markTaskComplete(taskId){
+    const taskArr= JSON.parse(localStorage.getItem('tasks'));
+    taskArr.forEach(t=> (t.id===taskId)&&(t.completed=true));
+    localStorage.setItem('tasks', JSON.stringify(taskArr));
+    console.log(taskArr);
+}
+markTaskComplete(1);
+markTaskComplete(3);
 /* Task 10
 Write a function `clearLocalStorage()` that removes all data stored in LocalStorage.
 Call it and confirm LocalStorage is empty.
 */
 
 console.log("10. ");
+function clearLocalStorage(){
+    localStorage.clear();
+}
+clearLocalStorage();
+if (localStorage.length===0){
+    console.log('LocalStorage is empty.');
+}else{
+    console.log('LocalStorage is not empty.')
+}
