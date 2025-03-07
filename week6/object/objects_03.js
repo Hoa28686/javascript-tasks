@@ -162,19 +162,30 @@ Use `fetch` to get weather data from an API and display it in an HTML element.
 (API: OpenWeather or any free weather API)
 */
 console.log('7.')
-const weatherApp={
-    fetchWeather:(city){
+// const weatherApp={
+//     fetchWeather:(city){
 
-    }
-}
+//     }
+// }
 
 /* Task 8
 Create a constructor function `Car` that takes `brand`, `model`, and `year`.
 In the constructor, add a method `age()` that calculates the car’s age.
 Instantiate a new `Car` and display its age on the webpage.
 */
-
 console.log('8.')
+function Car(brand, model, year){
+    this.brand=brand;
+    this.model=model;
+    this.year=year;
+    this.age=function(){
+        return new Date().getFullYear()-this.year;
+    }
+}
+const car1=new Car('Lexus','RX 350',2022);
+const carAge=document.querySelector('#task8');
+
+carAge.textContent=`Car: ${car1.brand}, ${car1.model},  age: ${car1.age()}`;
 
 /* Task 9
 Create an array `users` where each user has `name` and `score`.

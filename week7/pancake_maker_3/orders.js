@@ -9,8 +9,7 @@ orderList.forEach(order=>{
   for (let title in order){
     let li=document.createElement('li');
     li.style.listStyle='none';
-    if((title!=='Toppings')&&(title!=='Extras')){
-        
+    while((title!=='Toppings')&&(title!=='Extras')){
         li.textContent= `${title}: ${order[title]}`;
     }
     ul.appendChild(li);

@@ -1,3 +1,4 @@
+const pancakeForm=document.querySelector('#pancakeForm');
 const bannerPrice = document.querySelector("#totalPrice");
 const totalDisplay = document.querySelector("#totalPriceDisplay");
 const seeBtn = document.querySelector("#seeOrder");
