@@ -293,7 +293,7 @@ function updateLike(e) {
     let key = Number(e.target.getAttribute("key"));
     //   find the object in the array and update its likes
     posts[key].likes += 1;
-    console.log(posts);
+    // console.log(posts);
     displayPost();
   }
 }
