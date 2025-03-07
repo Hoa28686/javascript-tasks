@@ -67,33 +67,32 @@ Write a function `getFromLocalStorage(key)` that:
 */
 
 console.log("5. ");
-function getFromLocalStorage(key){
-    const value=localStorage.getItem(key);
-    // if value exists
-    if(value){
-        try {
-            const valueObj=JSON.parse(value);
-            console.log(`Retrieved value of '${key}':`,valueObj);
-        }
-        catch(err){
-            console.log(`Retrieved value of '${key}':`,value);
-        }
-    } else{
-        console.log(`No value found for '${key}'.`);
+function getFromLocalStorage(key) {
+  const value = localStorage.getItem(key);
+  // if value exists
+  if (value) {
+    try {
+      const valueObj = JSON.parse(value);
+      console.log(`Retrieved value of '${key}':`, valueObj);
+    } catch (err) {
+      console.log(`Retrieved value of '${key}':`, value);
     }
+  } else {
+    console.log(`No value found for '${key}'.`);
+  }
 }
-localStorage.setItem('testTask5',4);
-localStorage.setItem('testTask5_1','string');
-localStorage.setItem('testTask5_2',true);
+localStorage.setItem("testTask5", 4);
+localStorage.setItem("testTask5_1", "string");
+localStorage.setItem("testTask5_2", true);
 
-getFromLocalStorage('key');
-getFromLocalStorage('testTask5');
-getFromLocalStorage('testTask5_1');
-getFromLocalStorage('testTask5_2');
-getFromLocalStorage('books');
-getFromLocalStorage('counter');
-getFromLocalStorage('my_laptop');
-getFromLocalStorage('shoppingList');
+getFromLocalStorage("key");
+getFromLocalStorage("testTask5");
+getFromLocalStorage("testTask5_1");
+getFromLocalStorage("testTask5_2");
+getFromLocalStorage("books");
+getFromLocalStorage("counter");
+getFromLocalStorage("my_laptop");
+getFromLocalStorage("shoppingList");
 
 /* Task 6
 Create an object `userProfile` with:
@@ -105,19 +104,20 @@ Save it to LocalStorage.
 Retrieve and update the `theme` property to `"dark mode"`, then log the updated object.
 */
 
-
 console.log("6. ");
-const userProfile={
-    username:'task6',
-    email:'task6@gmail.com',
-    preferences:{theme:'light mode', notifications:'system will automatically update at 2 a.m.'}
+const userProfile = {
+  username: "task6",
+  email: "task6@gmail.com",
+  preferences: {
+    theme: "light mode",
+    notifications: "system will automatically update at 2 a.m.",
+  },
 };
 
-localStorage.setItem('userProfile',JSON.stringify(userProfile));
-const profileObj=JSON.parse(localStorage.getItem('userProfile'));
-profileObj.preferences.theme='dark mode';
+localStorage.setItem("userProfile", JSON.stringify(userProfile));
+const profileObj = JSON.parse(localStorage.getItem("userProfile"));
+profileObj.preferences.theme = "dark mode";
 console.log(profileObj);
-
 
 /* Task 7
 Define an object `shoppingList` with an array `items` (strings).
@@ -130,19 +130,19 @@ Write a function `addItemToList(item)` that:
 */
 
 console.log("7. ");
-const shoppingList={
-    items:['fish','orange','kale','rice']
+const shoppingList = {
+  items: ["fish", "orange", "kale", "rice"],
 };
-localStorage.setItem('shoppingList',JSON.stringify(shoppingList));
+localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
 
-function addItemToList(item){
-    const listObj=JSON.parse(localStorage.getItem('shoppingList'));
-    listObj.items.push(item);
-    localStorage.setItem('shoppingList', JSON.stringify(listObj));
-    console.log(listObj);
+function addItemToList(item) {
+  const listObj = JSON.parse(localStorage.getItem("shoppingList"));
+  listObj.items.push(item);
+  localStorage.setItem("shoppingList", JSON.stringify(listObj));
+  console.log(listObj);
 }
 
-addItemToList('potato');
+addItemToList("potato");
 
 /* Task 8
 Create a counter object with:
@@ -156,17 +156,16 @@ Write a function `incrementCounter()` that:
 */
 
 console.log("8. New count: ");
-const counter={count:0};
-localStorage.setItem('counter', JSON.stringify(counter));
-function incrementCounter(){
-    const counterObj=JSON.parse(localStorage.getItem('counter'));
-    counterObj.count+=1;
-    localStorage.setItem('counter', JSON.stringify(counterObj));
-    console.log(counterObj.count);
+const counter = { count: 0 };
+localStorage.setItem("counter", JSON.stringify(counter));
+function incrementCounter() {
+  const counterObj = JSON.parse(localStorage.getItem("counter"));
+  counterObj.count += 1;
+  localStorage.setItem("counter", JSON.stringify(counterObj));
+  console.log(counterObj.count);
 }
 incrementCounter();
 incrementCounter();
-
 
 /* Task 9
 Create an array `tasks`, where each task is an object (`id`, `description`, `completed`).
@@ -181,17 +180,17 @@ Write a function `markTaskComplete(taskId)` that:
 console.log("9. ");
 
 const tasks = [
-    { id: 1, description: 'Go to school', completed: false },
-    { id: 2, description: 'Cook dinner', completed: false },
-    { id: 3, description: 'Do task 9 - localStorage', completed: false }
+  { id: 1, description: "Go to school", completed: false },
+  { id: 2, description: "Cook dinner", completed: false },
+  { id: 3, description: "Do task 9 - localStorage", completed: false },
 ];
 
-localStorage.setItem('tasks', JSON.stringify(tasks));
-function markTaskComplete(taskId){
-    const taskArr= JSON.parse(localStorage.getItem('tasks'));
-    taskArr.forEach(t=> (t.id===taskId)&&(t.completed=true));
-    localStorage.setItem('tasks', JSON.stringify(taskArr));
-    console.log(taskArr);
+localStorage.setItem("tasks", JSON.stringify(tasks));
+function markTaskComplete(taskId) {
+  const taskArr = JSON.parse(localStorage.getItem("tasks"));
+  taskArr.forEach((t) => t.id === taskId && (t.completed = true));
+  localStorage.setItem("tasks", JSON.stringify(taskArr));
+  console.log(taskArr);
 }
 markTaskComplete(1);
 markTaskComplete(3);
@@ -201,12 +200,12 @@ Call it and confirm LocalStorage is empty.
 */
 
 console.log("10. ");
-function clearLocalStorage(){
-    localStorage.clear();
+function clearLocalStorage() {
+  localStorage.clear();
 }
-// clearLocalStorage();
-if (localStorage.length===0){
-    console.log('LocalStorage is empty.');
-}else{
-    console.log('LocalStorage is not empty.')
+clearLocalStorage();
+if (localStorage.length === 0) {
+  console.log("LocalStorage is empty.");
+} else {
+  console.log("LocalStorage is not empty.");
 }
