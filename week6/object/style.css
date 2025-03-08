@@ -1,16 +1,29 @@
-body{
-    margin: 10px 10px;
+body {
+  margin: 10px 10px;
 }
-li{
-    text-transform: capitalize;
+#task6 li, #task10 li, #task15 li {
+  text-transform: capitalize;
 }
-p{
-    width:400px;
+p {
+  width: 400px;
 }
-hr{
-    width:300px;
-    margin:30px;
+hr {
+  width: 300px;
+  margin: 30px;
 }
-.like{
-    margin-left:250px;
+.like {
+  margin-left: 250px;
 }
+#task14 input {
+  position:absolute;
+  left:100px;
+  
+}
+#task14{
+    line-height:1.5;
+}
+#task14 button, #task15 button{
+    margin-left:110px;
+    margin-top:5px;
+}
+

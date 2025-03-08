@@ -284,7 +284,7 @@ function displayPost() {
   });
 }
 
-// there are many like buttons -> similar to 'form' exercise, addeventListener for the whole container
+// there are many 'like' buttons -> similar to 'form' exercise, addeventListener for the whole container
 postContainer.addEventListener("click", updateLike);
 
 function updateLike(e) {
@@ -305,6 +305,21 @@ Create an employee and increase their salary dynamically.
 */
 
 console.log("12.");
+function Employee(name, position, salary) {
+  this.name = name;
+  this.position = position;
+  this.salary = salary;
+  this.increaseSalary = function (percent) {
+    this.salary += percent * this.salary;
+  };
+}
+
+const employee1 = new Employee("Shinichi", "Director", 4000);
+employee1.increaseSalary(0.05);
+console.log(employee1); //4200
+
+employee1.increaseSalary(0.15);
+console.log(employee1); //4830
 
 /* Task 13
 Create an object `timer` with `seconds` and a method `start()` that counts seconds up.
@@ -312,13 +327,76 @@ Display the timer in an HTML element and update it every second.
 */
 
 console.log("13.");
+const task13Display = document.querySelector("#task13Display");
+const start = document.querySelector("#start");
+const stop = document.querySelector("#stop");
+const reset = document.querySelector("#reset");
+const timer = {
+  seconds: 0,
+  start: function () {
+    // store the interval in key 'interval'of object to stop the interval later
+    this.interval = setInterval(() => {
+      this.seconds++;
+      task13Display.innerHTML = this.seconds;
+    }, 1000);
+  },
+};
 
+start.addEventListener("click", () => {
+  interval = timer.start();
+});
+stop.addEventListener("click", () => {
+  clearInterval(timer.interval);
+});
+
+reset.addEventListener("click", () => {
+  clearInterval(timer.interval);
+  task13Display.innerHTML = 0;
+});
 /* Task 14
 Create a constructor function `Book` that takes `title`, `author`, and `pages`.
 Create a simple book library that allows users to add books via an HTML form and displays them dynamically.
 */
 
 console.log("14.");
+function Book(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+}
+
+const library = [];
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const displayLibrary = document.querySelector("#displayLibrary");
+
+const libraryForm = document.querySelector("#libraryForm");
+
+libraryForm.addEventListener("click", addBook);
+
+function addBook(e) {
+  if (e.target.id === "addBook") {
+    //make the form not submitting and refreshing the page
+    e.preventDefault();
+
+    //creat a book object and add it to the library
+    let titleText = title.value.trim().toUpperCase();
+    let authorText = author.value.trim().toUpperCase();
+    let pagesNumber = pages.value;
+    const book1 = new Book(titleText, authorText, pagesNumber);
+    library.push(book1);
+    //clear input field
+    title.value = author.value = pages.value = "";
+    //display book lists
+    displayLibrary.innerHTML = "Books we have in the library: ";
+    library.forEach((b) => {
+      displayLibrary.innerHTML += `
+      <li>Book: ${b.title} , by ${b.author}, ${b.pages} pages.</li>
+      `;
+    });
+  }
+}
 
 /* Task 15
 Create an object `foxTracker` with a `foxes` array.
@@ -326,3 +404,35 @@ Add an input field and button that allows users to add new foxes (with name and 
 Display the list of foxes dynamically in an HTML element.
 */
 console.log("15.");
+const foxTracker = {
+  foxes: [],
+};
+
+const foxForm = document.querySelector("#foxForm");
+const foxName = document.querySelector("#foxName");
+const foxLocation = document.querySelector("#foxLocation");
+const displayFox = document.querySelector("#displayFox");
+
+foxForm.addEventListener("click", addAndDisplayFox);
+
+function addAndDisplayFox(e) {
+  e.preventDefault();
+  // remember ==, not =
+  if (e.target.id == "addFoxBtn") {
+    const fox1 = {
+      name: foxName.value.trim().toLowerCase(),
+      location: foxLocation.value.trim().toLowerCase(),
+    };
+    foxTracker.foxes.push(fox1);
+
+    //display fox list
+    displayFox.innerHTML = "List of foxes: ";
+    foxTracker.foxes.forEach((f) => {
+      displayFox.innerHTML += `
+    <li>Name: ${f.name}. Location: ${f.location}</li>
+    `;
+    });
+    // clear input field
+    foxName.value = foxLocation.value = null;
+  }
+}

@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    
     <title>Object 3</title>
   </head>
   <body>
@@ -44,7 +46,9 @@
       <ul id="task-list"></ul>
     </section>
     <section>
-      <h2>Task 7: weather app</h2>
+      <h2>Task 7: Weather app</h2>
+      <input id="city" placeholder="Enter city's name ...">
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
     </section>
     <section>
       <h2>Task 8</h2>
@@ -55,7 +59,7 @@
       <ul id="displayUser"></ul>
       <button id="sortBtn">Sort in descending</button>
     </section>
-    <section>
+    <section id="task10">
       <h2>Task 10: shopping list</h2>
       <input id="itemInput" type="text" placeholder="Enter item..." />
       <button id="itemBtn">Add item</button>
@@ -64,20 +68,47 @@
     <section>
       <h2>Task 11</h2>
       <div id="post-container"></div>
- 
-    
     </section>
     <section>
       <h2>Task 12</h2>
+      <div>Check console</div>
     </section>
     <section>
-      <h2>Task 13</h2>
+      <h2>Task 13: Timer</h2>
+      <p id="task13Display">0</p>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="reset">Reset</button>
     </section>
-    <section>
+    <section id="task14">
       <h2>Task 14</h2>
+      <form id="libraryForm">
+        <label for="title">Title:</label>
+        <input id="title" type="text" placeholder="Enter book's title" />
+        <br />
+        <label for="author">Author:</label>
+        <input id="author" type="text" placeholder="Enter author's name" />
+        <br />
+        <label for="pages">Pages:</label>
+        <input
+          id="pages"
+          type="number"
+          min="1"
+          placeholder="Enter book's pages"
+        />
+        <br />
+        <button id="addBook">Add book to the library</button>
+        <ul id="displayLibrary"></ul>
+      </form>
     </section>
-    <section>
+    <section id="task15">
       <h2>Task 15</h2>
+      <form id="foxForm">
+        <input id="foxName" type="text" placeholder="Fox name" />
+        <input id="foxLocation" type="text" placeholder="Location" />
+        <button id="addFoxBtn">Add fox to the Tracker</button>
+      </form>
+      <ul id="displayFox"></ul>
     </section>
 
     <script src="objects_03.js"></script>
