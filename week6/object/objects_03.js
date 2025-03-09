@@ -159,30 +159,96 @@ Create an object `weatherApp` with a method `fetchWeather(city)`.
 Use `fetch` to get weather data from an API and display it in an HTML element.
 (API: OpenWeather or any free weather API)
 */
-// console.log("7.");
-// const search = document.querySelector("#search");
-// const city = document.querySelector(".city");
-// const country = document.querySelector(".country");
-// const description = document.querySelector(".description");
-// const value = document.querySelector(".value");
-// const uv = document.querySelector(".uv");
-// const humidity = document.querySelector(".humidity");
-// const wind = document.querySelector(".wind");
-// const visibility = document.querySelector(".visibility");
+console.log("7.");
+const weatherApp = {
+  fetchWeather: function (city) {
+    fetchFinal(city);
+  },
+};
 
-// function changeWeather() {
-//   search.value.trim();
-//   let api = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={a03dd7ed591a3c1577b7829c371b6cfb}`;
-//   console.log(fetch(api));
-// }
-// changeWeather();
+const search = document.querySelector("#search");
+const searchBtn = document.querySelector("#searchBtn");
+const content = document.querySelector("#content");
+const city = document.querySelector(".city");
+const country = document.querySelector(".country");
+const time = document.querySelector(".time");
+const description = document.querySelector(".description");
+const temp = document.querySelector(".temperature");
+const feel = document.querySelector(".feel");
+const uv = document.querySelector(".uv");
+const humidity = document.querySelector(".humidity");
+const wind = document.querySelector(".wind");
+const visibility = document.querySelector(".visibility");
 
-// const weatherApp={
-//     fetchWeather:(city){
+const apikey = "a03dd7ed591a3c1577b7829c371b6cfb";
 
-//     }
-// }
+// initialize lat and lon coordinates
+let lat = 0;
+let lon = 0;
 
+//get lat and lon of city name
+
+function fetchFinal(cityName) {
+  const geo = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=4&appid=${apikey}`;
+
+  fetch(geo)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length !== 0) {
+        lat = data[0].lat;
+        lon = data[0].lon;
+
+
+        //fetch weather data according to lat and lon
+        fetchCoor();
+      } else {
+        content.innerHTML = "City not found.";
+        search.value='';
+      }
+    })
+    .catch(() => {
+      // console.log("Error fetching lat/lon coordinates:", error);
+      content.innerHTML = "Error fetching lat and lon coordinates";
+    });
+}
+
+//fetch weather data according to lat and lon
+function fetchCoor() {
+  const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=metric`;
+
+  fetch(api)
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log("Weather data:", data);
+      displayWeather(data);
+    })
+    .catch(() => {
+      console.log("Error fetching weather data:", error);
+      content.innerHTML = "Can't get weather data";
+    });
+}
+
+function displayWeather(data) {
+  search.value='';
+  city.innerHTML = data.name + ", ";
+  country.innerHTML = data.sys.country;
+  time.innerHTML = new Date(data.dt * 1000);
+  temp.innerHTML = data.main.temp.toFixed();
+  feel.innerHTML = data.main.feels_like.toFixed() + "°C";
+  description.innerHTML = data.weather[0].description;
+  humidity.innerHTML = data.main.humidity + "%";
+  wind.innerHTML = (data.wind.speed * 3.6).toFixed() + " km/h";
+  visibility.innerHTML = data.visibility / 1000 + " km";
+}
+
+
+searchBtn.addEventListener("click", () => {
+ 
+  const cityName = search.value.trim().toLowerCase();
+  if (cityName !== "") {
+    weatherApp.fetchWeather(cityName);
+  }
+});
 /* Task 8
 Create a constructor function `Car` that takes `brand`, `model`, and `year`.
 In the constructor, add a method `age()` that calculates the car’s age.

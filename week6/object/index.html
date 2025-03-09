@@ -51,32 +51,39 @@
     <section id="task7">
       <h2>Task 7: Weather app</h2>
       <form>
-        <input id="search" placeholder="Search..." />
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input id="search" placeholder="Search city..." />
+        <button id="searchBtn" type="button">Search</button>
       </form>
       <div id="content">
         <div class="location">
-          <span class="city">Helsinki</span>
-          <span>,</span>
-          <span class="country">Finland</span>
+          <span class="city"></span><span class="country"></span>
         </div>
-        <div class="time">09.03.2025, 1:38 AM</div>
-        <div class="temperature">
-          <span class="value">23<sup>o</sup>C</span>
+        <!-- Time section -->
+        <div class="time"></div>
+
+        <!-- temperature -->
+        <div class="temp">
+          <span class="temperature">23</span><sup>o</sup>
         </div>
-        <div class="description">Sunny</div>
+
+        <div>Feels like <span class="feel"></span></div>
+
+        <div class="description">sunny</div>
+
         <div class="detail-container">
-          <div >
-            <span><i class="fa-solid fa-sun"></i> UV index</span> </div>
-            <div class="uv"></div>
-          <div >
-            <span><i class="fa-solid fa-droplet"></i> Humidity</span> </div>
+
+          <div class="detail-info">
+            <span><i class="fa-solid fa-droplet"></i> Humidity</span>
             <div class="humidity"></div>
-          <div >
-            <span><i class="fa-solid fa-wind"></i> Wind</span> </div>
+          </div>
+          
+          <div class="detail-info">
+            <span><i class="fa-solid fa-wind"></i> Wind</span>
             <div class="wind"></div>
-          <div >
-            <span><i class="fa-solid fa-eye"></i> Visibility</span></div>
+          </div>
+
+          <div class="detail-info">
+            <span><i class="fa-solid fa-eye"></i> Visibility</span>
             <div class="visibility"></div>
           </div>
       </div>

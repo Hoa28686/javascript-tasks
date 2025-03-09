@@ -31,7 +31,7 @@ hr {
 
 #task7 {
     /* overwrite text color so it stay the same when theme (task3) is changed */
-    color: white;
+    color: black;
     line-height:1.5;
   box-sizing: border-box;
   border-radius: 10px;
@@ -47,10 +47,10 @@ hr {
     #ffb8e0,
     #d76c82
   );
-  background:url(cold.jpg) center;
+
   text-align: center;
   padding: 10px;
-  text-shadow: 1px 1px 3px rgb(24, 23, 23);
+  text-shadow: 0.4px 0.4px rgb(24, 23, 23);
 }
 #task7 button,
 #task7 input {
@@ -84,15 +84,21 @@ hr {
 #content {
   margin: 20px;
 }
-.temperature {
+.temp {
     font-size: 60px;
-    
 }
 .detail-container{
     margin:20px auto;
     display:flex;
+    flex-direction: row;
     justify-content: space-around;
+}
+
+.detail-info span{
+    font-weight:bold;
+
 }
 .city, .location, .description{
     font-size:1.2rem;
+    text-transform: capitalize;
 }
