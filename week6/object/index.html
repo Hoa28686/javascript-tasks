@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
     <title>Object 3</title>
   </head>
   <body>
@@ -45,10 +48,38 @@
       <button id="display">Display task</button>
       <ul id="task-list"></ul>
     </section>
-    <section>
+    <section id="task7">
       <h2>Task 7: Weather app</h2>
-      <input id="city" placeholder="Enter city's name ...">
-      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      <form>
+        <input id="search" placeholder="Search..." />
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+      <div id="content">
+        <div class="location">
+          <span class="city">Helsinki</span>
+          <span>,</span>
+          <span class="country">Finland</span>
+        </div>
+        <div class="time">09.03.2025, 1:38 AM</div>
+        <div class="temperature">
+          <span class="value">23<sup>o</sup>C</span>
+        </div>
+        <div class="description">Sunny</div>
+        <div class="detail-container">
+          <div >
+            <span><i class="fa-solid fa-sun"></i> UV index</span> </div>
+            <div class="uv"></div>
+          <div >
+            <span><i class="fa-solid fa-droplet"></i> Humidity</span> </div>
+            <div class="humidity"></div>
+          <div >
+            <span><i class="fa-solid fa-wind"></i> Wind</span> </div>
+            <div class="wind"></div>
+          <div >
+            <span><i class="fa-solid fa-eye"></i> Visibility</span></div>
+            <div class="visibility"></div>
+          </div>
+      </div>
     </section>
     <section>
       <h2>Task 8</h2>

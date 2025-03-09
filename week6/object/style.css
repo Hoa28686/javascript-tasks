@@ -1,7 +1,9 @@
 body {
   margin: 10px 10px;
 }
-#task6 li, #task10 li, #task15 li {
+#task6 li,
+#task10 li,
+#task15 li {
   text-transform: capitalize;
 }
 p {
@@ -15,15 +17,82 @@ hr {
   margin-left: 250px;
 }
 #task14 input {
-  position:absolute;
-  left:100px;
-  
+  position: absolute;
+  left: 100px;
 }
-#task14{
-    line-height:1.5;
+#task14 {
+  line-height: 1.5;
 }
-#task14 button, #task15 button{
-    margin-left:110px;
-    margin-top:5px;
+#task14 button,
+#task15 button {
+  margin-left: 110px;
+  margin-top: 5px;
 }
 
+#task7 {
+    /* overwrite text color so it stay the same when theme (task3) is changed */
+    color: white;
+    line-height:1.5;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 400px;
+  min-height: 400px;
+  background-image: linear-gradient(
+     to bottom,
+    #a1e3f9,
+    #d1f8ef,
+    white,
+    #fbf8ef,
+    #ebe8db,
+    #ffb8e0,
+    #d76c82
+  );
+  background:url(cold.jpg) center;
+  text-align: center;
+  padding: 10px;
+  text-shadow: 1px 1px 3px rgb(24, 23, 23);
+}
+#task7 button,
+#task7 input {
+  border: none;
+  background: none;
+  outline: none;
+  margin: 5px;
+  
+}
+#task7 input {
+  width: 300px;
+}
+#task7 input::placeholder{
+    color: rgb(40, 40, 40);
+}
+#task7 form {
+  background: rgb(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: auto;
+  border-radius: 15px;
+  border: 1px solid rgb(129, 129, 129);
+  padding: 2px;
+}
+/* use focus-within so it works when child element is focused */
+#task7 form:focus-within {
+  background: rgb(253, 251, 251);
+}
+
+#content {
+  margin: 20px;
+}
+.temperature {
+    font-size: 60px;
+    
+}
+.detail-container{
+    margin:20px auto;
+    display:flex;
+    justify-content: space-around;
+}
+.city, .location, .description{
+    font-size:1.2rem;
+}

@@ -159,7 +159,24 @@ Create an object `weatherApp` with a method `fetchWeather(city)`.
 Use `fetch` to get weather data from an API and display it in an HTML element.
 (API: OpenWeather or any free weather API)
 */
-console.log("7.");
+// console.log("7.");
+// const search = document.querySelector("#search");
+// const city = document.querySelector(".city");
+// const country = document.querySelector(".country");
+// const description = document.querySelector(".description");
+// const value = document.querySelector(".value");
+// const uv = document.querySelector(".uv");
+// const humidity = document.querySelector(".humidity");
+// const wind = document.querySelector(".wind");
+// const visibility = document.querySelector(".visibility");
+
+// function changeWeather() {
+//   search.value.trim();
+//   let api = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={a03dd7ed591a3c1577b7829c371b6cfb}`;
+//   console.log(fetch(api));
+// }
+// changeWeather();
+
 // const weatherApp={
 //     fetchWeather:(city){
 
