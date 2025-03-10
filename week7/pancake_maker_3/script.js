@@ -2,7 +2,7 @@ const pancakeForm=document.querySelector('#pancakeForm');
 const bannerPrice = document.querySelector("#totalPrice");
 const totalDisplay = document.querySelector("#totalPriceDisplay");
 const seeBtn = document.querySelector("#seeOrder");
-const confirmOrder=document.selectedIndex('#confirmOrder');
+const confirmOrder=document.querySelector('#confirmOrder');
 const summaryText = document.querySelector("#summaryText");
 const customerName = document.querySelector("#customerName");
 let sum1 = 5;
@@ -93,19 +93,21 @@ function delivery(e) {
 }
 let id='';
 const allOrders=[];
-const order1={
-  'Order ID': Date.now(),
-  'Customer Name':customerName.value.trim(),
-  'Selected Pancake':type,
-  'Toppings':`${toppingArr.map((t) => t.name).join(", ")}`,
-  'Extras':`${extraArr.map((t) => t.name).join(", ")}`,
-  'Delivery Method':deli.name,
-  'Total Price': `${finalSum}€`,
-  'Status':'waiting'
-}
 
 function createOrder(){
-  
+  const order1={
+    'Order ID': Date.now(),
+    'Customer Name':customerName.value.trim(),
+    'Selected Pancake':type,
+    'Toppings':`${toppingArr.map((t) => t.name).join(", ")}`,
+    'Extras':`${extraArr.map((t) => t.name).join(", ")}`,
+    'Delivery Method':deli.name,
+    'Total Price': `${finalSum}€`,
+    'Status':'waiting'
+  }
+  if (e.target.id='seeOrder'){
+    
+  }  
   allOrders.push(order1);
   localStorage.setItem('allOrders',JSON.stringify(allOrders));
   console.log(localStorage.getItem('allOrders'));
@@ -114,7 +116,17 @@ function createOrder(){
 
 // display order summary for each customer
 function summary(){
-
+  const order1={
+    'Order ID': Date.now(),
+    'Customer Name':customerName.value.trim(),
+    'Selected Pancake':type,
+    'Toppings':`${toppingArr.map((t) => t.name).join(", ")}`,
+    'Extras':`${extraArr.map((t) => t.name).join(", ")}`,
+    'Delivery Method':deli.name,
+    'Total Price': `${finalSum}€`,
+    'Status':'waiting'
+  }
+  
   summaryText.innerHTML='';
   for(let key in order1){
     summaryText.innerHTML +=`${key}: ${order1[key]} <br>`
