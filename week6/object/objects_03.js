@@ -160,12 +160,95 @@ Use `fetch` to get weather data from an API and display it in an HTML element.
 (API: OpenWeather or any free weather API)
 */
 console.log("7.");
-// const weatherApp={
-//     fetchWeather:(city){
+const weatherApp = {
+  fetchWeather: function (city) {
+    fetchFinal(city);
+  },
+};
 
-//     }
-// }
+const search = document.querySelector("#search");
+const searchBtn = document.querySelector("#searchBtn");
+const content = document.querySelector("#content");
+const city = document.querySelector(".city");
+const country = document.querySelector(".country");
+const time = document.querySelector(".time");
+const description = document.querySelector(".description");
+const temp = document.querySelector(".temperature");
+const feel = document.querySelector(".feel");
+const uv = document.querySelector(".uv");
+const humidity = document.querySelector(".humidity");
+const wind = document.querySelector(".wind");
+const visibility = document.querySelector(".visibility");
 
+const apikey = "a03dd7ed591a3c1577b7829c371b6cfb";
+
+// initialize lat and lon coordinates
+let lat = 0;
+let lon = 0;
+
+//get lat and lon of city name
+
+function fetchFinal(cityName) {
+  const geo = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=4&appid=${apikey}`;
+
+  fetch(geo)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length !== 0) {
+        lat = data[0].lat;
+        lon = data[0].lon;
+
+
+        //fetch weather data according to lat and lon
+        fetchCoor();
+      } else {
+        content.innerHTML = "City not found.";
+        search.value='';
+      }
+    })
+    .catch(() => {
+      // console.log("Error fetching lat/lon coordinates:", error);
+      content.innerHTML = "Error fetching lat and lon coordinates";
+    });
+}
+
+//fetch weather data according to lat and lon
+function fetchCoor() {
+  const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=metric`;
+
+  fetch(api)
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log("Weather data:", data);
+      displayWeather(data);
+    })
+    .catch(() => {
+      console.log("Error fetching weather data:", error);
+      content.innerHTML = "Can't get weather data";
+    });
+}
+
+function displayWeather(data) {
+  search.value='';
+  city.innerHTML = data.name + ", ";
+  country.innerHTML = data.sys.country;
+  time.innerHTML = new Date(data.dt * 1000);
+  temp.innerHTML = data.main.temp.toFixed();
+  feel.innerHTML = data.main.feels_like.toFixed() + "°C";
+  description.innerHTML = data.weather[0].description;
+  humidity.innerHTML = data.main.humidity + "%";
+  wind.innerHTML = (data.wind.speed * 3.6).toFixed() + " km/h";
+  visibility.innerHTML = data.visibility / 1000 + " km";
+}
+
+
+searchBtn.addEventListener("click", () => {
+ 
+  const cityName = search.value.trim().toLowerCase();
+  if (cityName !== "") {
+    weatherApp.fetchWeather(cityName);
+  }
+});
 /* Task 8
 Create a constructor function `Car` that takes `brand`, `model`, and `year`.
 In the constructor, add a method `age()` that calculates the car’s age.
@@ -284,7 +367,7 @@ function displayPost() {
   });
 }
 
-// there are many like buttons -> similar to 'form' exercise, addeventListener for the whole container
+// there are many 'like' buttons -> similar to 'form' exercise, addeventListener for the whole container
 postContainer.addEventListener("click", updateLike);
 
 function updateLike(e) {
@@ -305,6 +388,21 @@ Create an employee and increase their salary dynamically.
 */
 
 console.log("12.");
+function Employee(name, position, salary) {
+  this.name = name;
+  this.position = position;
+  this.salary = salary;
+  this.increaseSalary = function (percent) {
+    this.salary += percent * this.salary;
+  };
+}
+
+const employee1 = new Employee("Shinichi", "Director", 4000);
+employee1.increaseSalary(0.05);
+console.log(employee1); //4200
+
+employee1.increaseSalary(0.15);
+console.log(employee1); //4830
 
 /* Task 13
 Create an object `timer` with `seconds` and a method `start()` that counts seconds up.
@@ -312,13 +410,76 @@ Display the timer in an HTML element and update it every second.
 */
 
 console.log("13.");
+const task13Display = document.querySelector("#task13Display");
+const start = document.querySelector("#start");
+const stop = document.querySelector("#stop");
+const reset = document.querySelector("#reset");
+const timer = {
+  seconds: 0,
+  start: function () {
+    // store the interval in key 'interval'of object to stop the interval later
+    this.interval = setInterval(() => {
+      this.seconds++;
+      task13Display.innerHTML = this.seconds;
+    }, 1000);
+  },
+};
 
+start.addEventListener("click", () => {
+  interval = timer.start();
+});
+stop.addEventListener("click", () => {
+  clearInterval(timer.interval);
+});
+
+reset.addEventListener("click", () => {
+  clearInterval(timer.interval);
+  task13Display.innerHTML = 0;
+});
 /* Task 14
 Create a constructor function `Book` that takes `title`, `author`, and `pages`.
 Create a simple book library that allows users to add books via an HTML form and displays them dynamically.
 */
 
 console.log("14.");
+function Book(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+}
+
+const library = [];
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const displayLibrary = document.querySelector("#displayLibrary");
+
+const libraryForm = document.querySelector("#libraryForm");
+
+libraryForm.addEventListener("click", addBook);
+
+function addBook(e) {
+  if (e.target.id === "addBook") {
+    //make the form not submitting and refreshing the page
+    e.preventDefault();
+
+    //creat a book object and add it to the library
+    let titleText = title.value.trim().toUpperCase();
+    let authorText = author.value.trim().toUpperCase();
+    let pagesNumber = pages.value;
+    const book1 = new Book(titleText, authorText, pagesNumber);
+    library.push(book1);
+    //clear input field
+    title.value = author.value = pages.value = "";
+    //display book lists
+    displayLibrary.innerHTML = "Books we have in the library: ";
+    library.forEach((b) => {
+      displayLibrary.innerHTML += `
+      <li>Book: ${b.title} , by ${b.author}, ${b.pages} pages.</li>
+      `;
+    });
+  }
+}
 
 /* Task 15
 Create an object `foxTracker` with a `foxes` array.
@@ -326,3 +487,35 @@ Add an input field and button that allows users to add new foxes (with name and 
 Display the list of foxes dynamically in an HTML element.
 */
 console.log("15.");
+const foxTracker = {
+  foxes: [],
+};
+
+const foxForm = document.querySelector("#foxForm");
+const foxName = document.querySelector("#foxName");
+const foxLocation = document.querySelector("#foxLocation");
+const displayFox = document.querySelector("#displayFox");
+
+foxForm.addEventListener("click", addAndDisplayFox);
+
+function addAndDisplayFox(e) {
+  e.preventDefault();
+  // remember ==, not =
+  if (e.target.id == "addFoxBtn") {
+    const fox1 = {
+      name: foxName.value.trim().toLowerCase(),
+      location: foxLocation.value.trim().toLowerCase(),
+    };
+    foxTracker.foxes.push(fox1);
+
+    //display fox list
+    displayFox.innerHTML = "List of foxes: ";
+    foxTracker.foxes.forEach((f) => {
+      displayFox.innerHTML += `
+    <li>Name: ${f.name}. Location: ${f.location}</li>
+    `;
+    });
+    // clear input field
+    foxName.value = foxLocation.value = null;
+  }
+}
