@@ -1,1 +1,1 @@
-- **Run 'npm install prompt-sync' in the terminal to use prompt**
+- **Important: Run 'npm install prompt-sync' in the terminal to use prompt**
