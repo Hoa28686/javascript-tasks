@@ -25,13 +25,13 @@ function update_sum() {
 }
 
 // Select pancake type
-let type = "Classsic 5€";
+let type = "Classsic - 5€";
 function pancakeType(e) {
   if (e.target.id == "type") {
     sum1 = Number(
       e.target.options[e.target.selectedIndex].getAttribute("data-price")
     );
-    type = e.target.options[e.target.selectedIndex].textContent;
+    type = e.target.options[e.target.selectedIndex].textContent.split(' - ')[0];
     update_sum();
   }
 }
@@ -45,12 +45,13 @@ function Arr(name, price) {
 let toppingArr = [];
 let extraArr = [];
 
+
 // //topping function
 function topping(e) {
   //console.log(e.target.parentElement);
   //console.log(e.target);
   if (e.target.className == "topping") {
-    const toppingName = e.target.parentElement.textContent.trim();
+    const toppingName = e.target.parentElement.textContent.split('-')[0].trim();
     const toppingPrice = Number(e.target.getAttribute("data-price"));
     const top = new Arr(toppingName, toppingPrice);
     if (e.target.checked) {
@@ -66,7 +67,7 @@ function topping(e) {
 //extra function
 function extra(e) {
   if (e.target.className == "extra") {
-    const extraName = e.target.parentElement.textContent.trim();
+    const extraName = e.target.parentElement.textContent.split('-')[0].trim();
     const extraPrice = Number(e.target.getAttribute("data-price"));
     const extra = new Arr(extraName, extraPrice);
     if (e.target.checked) {
@@ -83,7 +84,7 @@ function extra(e) {
 let deli = new Arr("Eat In", 0);
 function delivery(e) {
   if (e.target.className == "delivery") {
-    const deliName = e.target.parentElement.textContent.trim();
+    const deliName = e.target.parentElement.textContent.split(' (+5€)')[0];
     const deliPrice = Number(e.target.getAttribute("data-price"));
     deli = new Arr(deliName, deliPrice);
     sum4 = deliPrice;
@@ -114,24 +115,26 @@ let id='';
 //   this.status=status;
 // }
 
-const orders=[];
+const allOrders=[];
 
 function createOrder(){
   const order1={
     'Order ID': Date.now(),
     'Customer Name':customerName.value.trim(),
     'Selected Pancake':type,
-    'Toppings':toppingArr,
-    'Extras':extraArr,
+    'Toppings':`${toppingArr.map((t) => t.name).join(", ")}`,
+    'Extras':`${extraArr.map((t) => t.name).join(", ")}`,
     'Delivery Method':deli.name,
-    'Total Price': finalSum,
+    'Total Price': `${finalSum}€`,
     'Status':'waiting'
   }
-  orders.push(order1);
-  localStorage.setItem('orders',JSON.stringify(orders));
+  allOrders.push(order1);
+  localStorage.setItem('allOrders',JSON.stringify(allOrders));
+  console.log(localStorage.getItem('allOrders'));
   
 }
-createOrder();
+// createOrder();
+seeBtn.addEventListener('click',createOrder);
 // All Orders page
 
 
