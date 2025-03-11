@@ -1,15 +1,15 @@
-const pancakeForm=document.querySelector('#pancakeForm');
+const pancakeForm = document.querySelector("#pancakeForm");
 const bannerPrice = document.querySelector("#totalPrice");
 const totalDisplay = document.querySelector("#totalPriceDisplay");
 const seeBtn = document.querySelector("#seeOrder");
-const confirmOrder=document.querySelector('#confirmOrder');
+const confirmOrder = document.querySelector("#confirmOrder");
 const summaryText = document.querySelector("#summaryText");
 const customerName = document.querySelector("#customerName");
 let sum1 = 5;
 let sum2 = 0;
 let sum3 = 0;
 let sum4 = 0;
-let finalSum=5;
+let finalSum = 5;
 
 pancakeForm.addEventListener("change", (e) => {
   pancakeType(e);
@@ -18,20 +18,22 @@ pancakeForm.addEventListener("change", (e) => {
   delivery(e);
 });
 
-
 function update_sum() {
-  finalSum = sum1+sum2+sum3+sum4;
-  bannerPrice.textContent = totalDisplay.textContent = finalSum+"€";
+  finalSum = sum1 + sum2 + sum3 + sum4;
+  bannerPrice.textContent = totalDisplay.textContent = finalSum + "€";
 }
 
 // Select pancake type
-let type = "Classsic";
+let type = "Classic";
 function pancakeType(e) {
-  if (e.target.id == "type") {
+  if (e.target.id === "type") {
     sum1 = Number(
       e.target.options[e.target.selectedIndex].getAttribute("data-price")
     );
-    type = e.target.options[e.target.selectedIndex].textContent.split(' - ')[0];
+    type = e.target.options[e.target.selectedIndex].textContent
+    .split("-")[0]
+    .replace(/[^\w\s]/g, "")
+    .trim();
     update_sum();
   }
 }
@@ -45,13 +47,15 @@ function Arr(name, price) {
 let toppingArr = [];
 let extraArr = [];
 
-
 // //topping function
 function topping(e) {
   //console.log(e.target.parentElement);
   //console.log(e.target);
-  if (e.target.className == "topping") {
-    const toppingName = e.target.parentElement.textContent.split('-')[0].trim();
+  if (e.target.className === "topping") {
+    // remove extra newlines and spaces
+    const toppingName = e.target.parentElement.textContent
+    .replace(/[^\w\s]/g, "") //remove emoji
+    .replace(/\s+/g, "") //remove newline and extra space due to autoformat
     const toppingPrice = Number(e.target.getAttribute("data-price"));
     const top = new Arr(toppingName, toppingPrice);
     if (e.target.checked) {
@@ -66,8 +70,12 @@ function topping(e) {
 
 //extra function
 function extra(e) {
-  if (e.target.className == "extra") {
-    const extraName = e.target.parentElement.textContent.split('-')[0].trim();
+  if (e.target.className === "extra") {
+    // remove extra newlines and spaces
+    const extraName = e.target.parentElement.textContent
+      .split("-")[0]
+      .replace(/\s+/g, " ")
+      .trim();
     const extraPrice = Number(e.target.getAttribute("data-price"));
     const extra = new Arr(extraName, extraPrice);
     if (e.target.checked) {
@@ -84,57 +92,82 @@ function extra(e) {
 let deli = new Arr("Eat In", 0);
 function delivery(e) {
   if (e.target.className == "delivery") {
-    const deliName = e.target.parentElement.textContent.split(' (+5€)')[0];
+    const deliName = e.target.parentElement.textContent
+      .split(" (+5€)")[0]
+      .replace(/\s+/g, " ");
     const deliPrice = Number(e.target.getAttribute("data-price"));
     deli = new Arr(deliName, deliPrice);
     sum4 = deliPrice;
     update_sum();
   }
 }
-let id='';
-const allOrders=[];
+let id = "";
+// if(!localStorage.getItem('allOrders')){
+//   localStorage.setItem("allOrders", JSON.stringify(allOrders));
+//     console.log(localStorage.getItem("allOrders"));
 
-function createOrder(){
-  const order1={
-    'Order ID': Date.now(),
-    'Customer Name':customerName.value.trim(),
-    'Selected Pancake':type,
-    'Toppings':`${toppingArr.map((t) => t.name).join(", ")}`,
-    'Extras':`${extraArr.map((t) => t.name).join(", ")}`,
-    'Delivery Method':deli.name,
-    'Total Price': `${finalSum}€`,
-    'Status':'waiting'
-  }
-  if (e.target.id='seeOrder'){
-    
-  }  
-  allOrders.push(order1);
-  localStorage.setItem('allOrders',JSON.stringify(allOrders));
-  console.log(localStorage.getItem('allOrders'));
-  
+// }
+const allOrders = [];
+
+// display template
+function displayOrder(order) {
+  // can also use: ${[...order.toppings, ...order.extras].join(", ")}
+  let display = `
+  User ID: ${order.id} <br>
+  Customer Name: ${order.customerName} <br>
+  Pancake Type: ${order.selectedPancake} <br>
+  Toppings & Extras: ${order.toppings.concat(order.extras).join(", ")} <br>
+  Delivery Method: ${order.deliveryMethod} <br>
+  Total Price: ${order.totalPrice} <br>
+  Status: ${order.status} <br>
+  `;
+  return display;
 }
 
-// display order summary for each customer
-function summary(){
-  const order1={
-    'Order ID': Date.now(),
-    'Customer Name':customerName.value.trim(),
-    'Selected Pancake':type,
-    'Toppings':`${toppingArr.map((t) => t.name).join(", ")}`,
-    'Extras':`${extraArr.map((t) => t.name).join(", ")}`,
-    'Delivery Method':deli.name,
-    'Total Price': `${finalSum}€`,
-    'Status':'waiting'
+function createOrder(e) {
+  const order = {
+    id: Date.now(),
+    customerName: customerName.value.trim(),
+    selectedPancake: type,
+    toppings: toppingArr.map((t) => t.name),
+    extras: extraArr.map((t) => t.name),
+    deliveryMethod: deli.name,
+    totalPrice: finalSum,
+    status: "waiting",
+  };
+
+  // display order summary for each customer
+  if (e.target.id === "seeOrder") {
+    console.log(order);
+    summaryText.innerHTML = "";
+
+    summaryText.innerHTML += displayOrder(order);
   }
-  
-  summaryText.innerHTML='';
-  for(let key in order1){
-    summaryText.innerHTML +=`${key}: ${order1[key]} <br>`
+
+  if (e.target.id === "confirmOrder") {
+    allOrders.push(order);
+    console.log(allOrders);
+
+    localStorage.setItem("allOrders", JSON.stringify(allOrders));
+    // console.log(localStorage.getItem("allOrders"));
   }
 }
-seeBtn.addEventListener('click',summary)
-// createOrder();
-confirmOrder.addEventListener('click',createOrder);
 
+pancakeForm.addEventListener("click", (e) => {
+  createOrder(e);
+});
 
+// seeBtn.addEventListener('click',summary)
+// // createOrder();
+// confirmOrder.addEventListener('click',createOrder);
 
+// const order1 = {
+//   "Order ID": Date.now(),
+//   "Customer Name": customerName.value.trim(),
+//   "Selected Pancake": type,
+//   Toppings: `${toppingArr.map((t) => t.name)}`,
+//   Extras: `${extraArr.map((t) => t.name)}`,
+//   "Delivery Method": deli.name,
+//   "Total Price": `${finalSum}€`,
+//   Status: "waiting",
+// };

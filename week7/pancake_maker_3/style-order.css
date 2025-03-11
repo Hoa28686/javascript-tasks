@@ -1,5 +1,14 @@
-li{
-    margin-top: 20px;
-    line-height:1.5;
-    
+li {
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.waiting {
+  color: yellow;
+}
+.ready {
+  color: blue;
+}
+.delivered {
+  color: #65b8425d
 }
