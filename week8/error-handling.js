@@ -149,7 +149,7 @@ checkProperty({ name: "Bob", age: 30 }, "email"); // Should log "Property not fo
 console.log("Task 7:");
 //undefined is not error
 function checkProperty(obj, key) {
-  if (obj[key] == undefined) {
+  if (!obj[key]) {
     console.log("Property not found");
   } else {
     console.log(obj[key]);
