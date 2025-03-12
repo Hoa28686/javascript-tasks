@@ -122,29 +122,21 @@ function saveUser(user) {
   }
 }
 
-// function getUser() {
-//   try {
-//     const userObj=localStorage.getItem("user");
-//     // const userObj=JSON.parse(localStorage.getItem("user"));
-//     console.log(JSON.parse(userObj));
-//   } 
-//   catch (error) {
-//     console.error(error.message);
-//   }
-// }
-
 function getUser() {
-    const userObj=localStorage.getItem("user");
-    // const userObj=JSON.parse(localStorage.getItem("user"));
-    console.log(JSON.parse(userObj));
-  } 
+  try {
+    return JSON.parse(localStorage.getItem("user"));
+  } catch (error) {
+    console.error("Error: invalid JSON format");
+    return null;
+  }
+}
 
-// saveUser({ name: "Alice", age: 25 });
-console.log('2',getUser());
+saveUser({ name: "Alice", age: 25 });
+console.log(getUser());
 
-// console.log("----");
-// localStorage.setItem("user", "{ invalid JSON }"); // Simulate corruption
-// console.log(getUser()); // Should log an error and return null
+console.log("----");
+localStorage.setItem("user", "{ invalid JSON }");
+console.log(getUser());
 
 /* Task 7: Check if Object Property Exists
 /*
@@ -157,13 +149,12 @@ checkProperty({ name: "Bob", age: 30 }, "email"); // Should log "Property not fo
 console.log("Task 7:");
 //undefined is not error
 function checkProperty(obj, key) {
-    if(obj[key]==undefined){
-      console.log("Property not found");
-    }else{
+  if (obj[key] == undefined) {
+    console.log("Property not found");
+  } else {
     console.log(obj[key]);
-  }}
-
-
+  }
+}
 
 checkProperty({ name: "Bob", age: 30 }, "name");
 checkProperty({ name: "Bob", age: 30 }, "email");
@@ -176,10 +167,19 @@ Test cases:
 fetchData("https://jsonplaceholder.typicode.com/users"); // Should log API data
 fetchData("invalid-url"); // Should log network error
 */
-console.log("Task 8:");
+console.log("Task 8 shows after task 10 in the terminal");
 async function fetchData(url) {
-  // Your code here
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("API data: ", data);
+  } catch (error) {
+    console.error("Network error: " + error.message);
+  }
 }
+fetchData("https://jsonplaceholder.typicode.com/users");
+
+fetchData("invalid-url");
 
 /* Task 9: Fix a URI Error
 /*
@@ -191,8 +191,15 @@ task9("%"); // Should log URIError
 */
 console.log("Task 9:");
 function task9(malformedURI) {
-  // Your code here
+  try {
+    return decodeURIComponent(malformedURI);
+  } catch (error) {
+    return "URIError: " + error.message;
+  }
 }
+
+console.log(task9("https%3A%2F%2Fexample.com"));
+console.log(task9("%"));
 
 /* Task 10: Clear LocalStorage
 /*
@@ -203,5 +210,11 @@ clearStorage(); // Should log "LocalStorage cleared."
 */
 console.log("Task 10:");
 function clearStorage() {
-  // Your code here
+  try {
+    localStorage.clear();
+    console.log("LocalStorage cleared.");
+  } catch (error) {
+    console.error("Error: LocalStorage is uncleared.");
+  }
 }
+clearStorage();
