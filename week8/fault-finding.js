@@ -10,7 +10,7 @@ let LocalStorage = require("node-localstorage").LocalStorage,
 - Fix the errors and validate the expected output.
 */
 
-("use strict");
+"use strict";
 
 /* Task 1: Fix the Greeting Function  
 Should return "Hello, [name]!".  
