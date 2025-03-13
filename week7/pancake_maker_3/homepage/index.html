@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Pancake Maker</title>
+    <title>Pancake Maker 3</title>
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -86,10 +86,16 @@
 
           <!-- Total Price Display -->
           <h3>Total Price: <span id="totalPriceDisplay">5€</span></h3>
+          <div id="button">
+            <!-- See Order Button -->
+            <button type="button" id="seeOrder">See Order</button>
+            <button type="button" id="confirmOrder">Confirm Order</button>
 
-          <!-- See Order Button -->
-          <button type="button" id="seeOrder">See Order</button>
-          <button type="button" id="confirmOrder">Confirm Order</button>
+            <!-- All orders -->
+            <a href="../all_order/orders.html" target="_blank"
+              >See all orders</a
+            >
+          </div>
         </form>
 
         <!-- Order Summary Display -->
@@ -97,13 +103,9 @@
           <h3>Order Summary</h3>
           <p id="summaryText">Your order details will appear here.</p>
         </div>
-        <!-- All orders -->
-        <button id="all-orders">
-          <a href="allorders.html" target="_blank">All orders</a>
-        </button>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

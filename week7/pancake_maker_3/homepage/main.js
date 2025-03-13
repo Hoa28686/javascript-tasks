@@ -31,9 +31,9 @@ function pancakeType(e) {
       e.target.options[e.target.selectedIndex].getAttribute("data-price")
     );
     type = e.target.options[e.target.selectedIndex].textContent
-    .split("-")[0]
-    .replace(/[^\w\s]/g, "")
-    .trim();
+      .split("-")[0]
+      .replace(/[^\w\s]/g, "")
+      .trim();
     update_sum();
   }
 }
@@ -54,8 +54,8 @@ function topping(e) {
   if (e.target.className === "topping") {
     // remove extra newlines and spaces
     const toppingName = e.target.parentElement.textContent
-    .replace(/[^\w\s]/g, "") //remove emoji
-    .replace(/\s+/g, "") //remove newline and extra space due to autoformat
+      .replace(/[^\w\s]/g, "") //remove emoji
+      .replace(/\s+/g, ""); //remove newline and extra space due to autoformat
     const toppingPrice = Number(e.target.getAttribute("data-price"));
     const top = new Arr(toppingName, toppingPrice);
     if (e.target.checked) {
@@ -113,13 +113,12 @@ const allOrders = [];
 function displayOrder(order) {
   // can also use: ${[...order.toppings, ...order.extras].join(", ")}
   let display = `
-  User ID: ${order.id} <br>
-  Customer Name: ${order.customerName} <br>
-  Pancake Type: ${order.selectedPancake} <br>
-  Toppings & Extras: ${order.toppings.concat(order.extras).join(", ")} <br>
-  Delivery Method: ${order.deliveryMethod} <br>
-  Total Price: ${order.totalPrice} <br>
-  Status: ${order.status} <br>
+  Customer Name: <strong>${order.customerName}</strong> <br>
+  Pancake Type: <strong>${order.selectedPancake}</strong> <br>
+  Toppings & Extras: <strong>${order.toppings.concat(order.extras).join(", ")}</strong> <br>
+  Delivery Method: <strong>${order.deliveryMethod}</strong> <br>
+  Total Price: <strong>${order.totalPrice} </strong><br>
+  Status: <strong>${order.status}</strong> <br>
   `;
   return display;
 }
@@ -146,10 +145,15 @@ function createOrder(e) {
 
   if (e.target.id === "confirmOrder") {
     allOrders.push(order);
-    console.log(allOrders);
+    // console.log(allOrders);
+    summaryText.innerHTML = displayOrder(order);
 
+    // save in localStorage
     localStorage.setItem("allOrders", JSON.stringify(allOrders));
     // console.log(localStorage.getItem("allOrders"));
+
+    //clear form
+    pancakeForm.reset();
   }
 }
 

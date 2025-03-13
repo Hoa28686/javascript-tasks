@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("pancakes-pattern.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: -10;
+}
+
+header {
+  margin: 30px;
+  text-align: center;
+  line-height: 2;
+  font-family: "poppins", Arial, Helvetica, sans-serif;
+}
+h2 {
+  font-size: 2rem;
+  text-shadow: 0.5px 0.5px grey;
+}
+#search {
+  width: 400px;
+  border-radius: 10px;
+  padding: 10px;
+  background: white;
+}
+#sort {
+  border-radius: 5px;
+  line-height: 1.5;
+  padding: 2px;
+  margin: 10px auto;
+  background-color: white;
+  text-align: center;
+  font-size:1rem;
+}
+.back-home {
+  text-decoration: none;
+  position: fixed;
+  right: 5px;
+  top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 30;
+  background: #ffc0f7;
+  color: black;
+  font-weight: bold;
+  box-shadow: 1px 1px #4f2749;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+li {
+  display: inline-block;
+  margin: 20px;
+  background-color: rgb(223, 250, 227);
+  padding: 30px 20px 40px 20px;
+  border-radius: 10px;
+  list-style: none;
+  width: 25%;
+  min-width: 200px;
+  line-height: 1.8;
+  position: relative;
+  box-shadow: 1px 1px 1px grey;
+}
+
+.rm {
+  /* display: none; */
+  border: none;
+  background: none;
+  text-decoration: underline;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: inherit;
+}
+.rm:hover {
+  color: red;
+}
+.status{
+  border-radius:3px;
+}

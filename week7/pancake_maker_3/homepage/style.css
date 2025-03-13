@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
   background-color: #ffffff;
   color: #000000;
@@ -13,6 +17,19 @@ body {
   line-height: 1.5;
 }
 
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../all_order/pancakes-pattern.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: -10;
+}
 .container {
   display: flex;
   align-items: flex-start;
@@ -50,7 +67,7 @@ label:hover {
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: #b36223;
+  background-color: #bf3131;
   color: white;
   border-radius: 50%;
   border: 2px solid black;
@@ -59,44 +76,78 @@ label:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  box-shadow: #000000;
-  overflow: hidden;
+  font-size: 40px;
+  box-shadow: 1px 1px black;
+
 }
-h2 {
-  margin-top: 15px;
+h2,
+#summaryText {
+  margin: 20px;
 }
 h3 {
-  margin-top: 15px;
+  margin: 15px;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   margin-right: 5px;
+  margin-left: 10px;
 }
 input[type="text"] {
   margin-left: 20px;
+  line-height: 20px;
+  padding: 5px;
 }
-select,
+
 label {
   display: block;
   margin: 15px;
 }
-#top {
+
+#pancakeForm {
   border: solid 2pxrgb (223, 250, 227);
   margin-right: 40px;
   background-color: rgb(223, 250, 227);
-  padding: 10px 15px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow:1px 1px black;
+  min-width:300px;
 }
 select {
   font-size: 15px;
+  margin: 5px 30px;
   padding: 5px;
   border-radius: 5px;
 }
-#totalPrice {
-  animation: bigger 5s infinite;
+
+#button {
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+  padding: 0;
+  height: 50px;
 }
-@keyframes bigger {
-  50% {
-    font-size: 40px;
-  }
+#button button:hover,
+#button a:hover {
+  color: green;
+}
+#button button,
+#button a {
+  flex: 1;
+  border: none;
+  background: white;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  font: bold 1rem "raleway", sans-serif;
+}
+#button button {
+  border-right: 1px solid green;
+}
+#button a {
+  text-decoration: none;
 }
