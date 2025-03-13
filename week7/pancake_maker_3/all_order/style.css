@@ -82,7 +82,7 @@ li {
 }
 
 .rm {
-  /* display: none; */
+  display: none;
   border: none;
   background: none;
   text-decoration: underline;
