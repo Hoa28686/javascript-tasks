@@ -46,7 +46,7 @@ h2 {
   margin: 10px auto;
   background-color: white;
   text-align: center;
-  font-size:1rem;
+  font-size: 1rem;
 }
 .back-home {
   text-decoration: none;
@@ -94,6 +94,9 @@ li {
 .rm:hover {
   color: red;
 }
-.status{
-  border-radius:3px;
+.status {
+  border-radius: 5px;
+  text-align: center;
+  font-size: inherit;
+  padding: 3px;
 }
