@@ -42,7 +42,7 @@ Create an object `theme` with properties `name` (light or dark) and `isActive`.
 Add a button in HTML. When clicked, toggle the theme between light and dark, updating the `isActive` property.
 */
 console.log("3.");
-const theme = { name: "light", isActive: true };
+const theme = { name: "light", isActive: false };
 const toggleBtn = document.querySelector("#toggleBtn");
 
 toggleBtn.addEventListener("click", toggle);
@@ -65,7 +65,7 @@ Add two buttons in HTML: one to increase `value`, another to decrease it.
 Display `value` in an HTML element and update it dynamically when buttons are clicked.
 */
 console.log("4.");
-const counter = { value: 5 };
+const counter = { value: 0 };
 const counterValue = document.querySelector("#counter-value");
 const add = document.querySelector("#add");
 const remove = document.querySelector("#remove");
@@ -103,7 +103,7 @@ const totalPrice = () => {
   totalValue.textContent = `Total price ${total}`;
 };
 
-quant.addEventListener("change", totalPrice);
+quant.addEventListener("keyup", totalPrice);
 
 /* Task 6
 Define a `Task` constructor that takes `title`, `description`, and `completed`.
@@ -399,10 +399,9 @@ function Employee(name, position, salary) {
 
 const employee1 = new Employee("Shinichi", "Director", 4000);
 employee1.increaseSalary(0.05);
-console.log(employee1); //4200
-
 employee1.increaseSalary(0.15);
-console.log(employee1); //4830
+
+console.log(employee1); //4830  
 
 /* Task 13
 Create an object `timer` with `seconds` and a method `start()` that counts seconds up.
