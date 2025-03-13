@@ -1,9 +1,13 @@
 const orderList = JSON.parse(localStorage.getItem("allOrders"));
 const orderDetail = document.querySelector("#order-detail");
+const searchBtn=document.querySelector('#search');
+const sort=document.querySelector('#sort');
 
 
-
+searchBtn.addEventListener('keyup',searchOrder);
+sort.addEventListener('change',sortOrder);
 updateDisplay();
+
 
 function updateDisplay(){
   const orderListUpdated = JSON.parse(localStorage.getItem("allOrders"));
@@ -12,11 +16,14 @@ function updateDisplay(){
     let li = document.createElement("li");
     li.id = order.id; //so we can update list later
     li.innerHTML = displayOrder(order);
+    
+    // status and background color are corrected when reload the page
     let select=li.querySelector('.status');
     select.value=order.status;
-    for (let i of select.children){
-      if(select.value == i.value){
-        select.style.backgroundColor=i.getAttribute('color');
+    // status background
+    for (let child of select.children){
+      if(select.value == child.value){
+        select.style.backgroundColor=child.getAttribute('color');
       }
     }
     orderDetail.appendChild(li);
@@ -45,10 +52,10 @@ function displayOrder(order) {
 }
 
 // set color for status options
-orderDetail.addEventListener('change', changeColor);
+orderDetail.addEventListener('change', updateStatus);
 
 
-function changeColor(e) {
+function updateStatus(e) {
   e.preventDefault();
   if (e.target.classList.contains('status')){
 
@@ -58,37 +65,50 @@ function changeColor(e) {
     e.target.style.backgroundColor = chosenStatus.getAttribute('color');
 
     // update it to localStorage
-    chosenStatus.setAttribute('selected',true);
     let li =e.target.parentElement;
     orderList.forEach((order) => {
       // important: only == not ===, different types
       if (order.id == li.id) {
         order.status = chosenStatus.value;
-        console.log(e.target);
       }})
+
+    // update status to localStorage
     localStorage.setItem("allOrders", JSON.stringify(orderList));
 
     console.log(localStorage.getItem("allOrders"));
-    console.log(li);
 }
 }
 
+// Search Order by anything
+function searchOrder(e){
+  let searchText=e.target.value.trim().toLowerCase();
+  let list =orderDetail.querySelectorAll('li');
+  list.forEach(order=>{
+    let orderText=order.textContent.toLowerCase();
+    if(orderText.includes(searchText)){
+      order.style.display='block';
+    }else{
+      order.style.display="none";
+    }
+  })
+}
 
-// function updateStatus(e) {
-    // if(e.target.classList.contains('status')){
-    //     const li = e.target.closest("li");
 
-    // }
-//   orderList.forEach((order) => {
-//     // important: only == not ===, different types
-//     if (order.id == li.id) {
-//       order.status = e.target.options[e.target.selectedIndex].textContent;
-//     }
-//   });
-//   localStorage.setItem("allOrders", JSON.stringify(orderList));
-//   console.log(localStorage.getItem("allOrders"));
-//   // console.log(orderList);
-// }
+// sort order by status
+
+function sortOrder(){
+  console.log(sort.value);
+  let list =orderDetail.querySelectorAll('li');
+  list.forEach(order=>{
+    let status=order.querySelector('.status')
+    // console.log(status.value);
+    if(sort.value==status.value){
+      order.style.display='block';
+    }else{
+      order.style.display="none";
+    }
+  })
+}
 
 
 // //remove delivered orders
