@@ -5,6 +5,7 @@ const seeBtn = document.querySelector("#seeOrder");
 const confirmOrder = document.querySelector("#confirmOrder");
 const summaryText = document.querySelector("#summaryText");
 const customerName = document.querySelector("#customerName");
+const stopBtn = document.querySelector("#stopVideo");
 let sum1 = 5;
 let sum2 = 0;
 let sum3 = 0;
@@ -115,7 +116,9 @@ function displayOrder(order) {
   let display = `
   Customer Name: <strong>${order.customerName}</strong> <br>
   Pancake Type: <strong>${order.selectedPancake}</strong> <br>
-  Toppings & Extras: <strong>${order.toppings.concat(order.extras).join(", ")}</strong> <br>
+  Toppings & Extras: <strong>${order.toppings
+    .concat(order.extras)
+    .join(", ")}</strong> <br>
   Delivery Method: <strong>${order.deliveryMethod}</strong> <br>
   Total Price: <strong>${order.totalPrice} </strong><br>
   Status: <strong>${order.status}</strong> <br>
@@ -161,17 +164,8 @@ pancakeForm.addEventListener("click", (e) => {
   createOrder(e);
 });
 
-// seeBtn.addEventListener('click',summary)
-// // createOrder();
-// confirmOrder.addEventListener('click',createOrder);
+// stop video
 
-// const order1 = {
-//   "Order ID": Date.now(),
-//   "Customer Name": customerName.value.trim(),
-//   "Selected Pancake": type,
-//   Toppings: `${toppingArr.map((t) => t.name)}`,
-//   Extras: `${extraArr.map((t) => t.name)}`,
-//   "Delivery Method": deli.name,
-//   "Total Price": `${finalSum}€`,
-//   Status: "waiting",
-// };
+stopBtn.addEventListener("click", () => {
+  document.querySelector("#pancakeVideo").pause();
+});

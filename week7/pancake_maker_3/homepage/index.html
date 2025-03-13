@@ -4,14 +4,19 @@
     <meta charset="UTF-8" />
     <title>Pancake Maker 3</title>
     <link rel="icon" href="data:," />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <div class="video-container">
-        <video autoplay muted loop id="myVideo">
+        <video autoplay muted loop id="pancakeVideo">
           <source src="pancake.mp4" type="video/mp4" />
         </video>
+        <button id="stopVideo"><i class="fa-solid fa-pause"></i></button>
         <div class="price-banner"><span id="totalPrice">5€</span></div>
       </div>
 
