@@ -6,11 +6,15 @@ const sort = document.querySelector("#sort");
 searchBtn.addEventListener("keyup", searchOrder);
 sort.addEventListener("change", sortOrder);
 updateDisplay();
+
+
 //update local storage
 const updateLS = () => {
   localStorage.setItem("allOrders", JSON.stringify(orderList));
+  // console.log(localStorage.getItem("removedOrder"));
 };
 
+//display orders
 function updateDisplay() {
   const orderListUpdated = JSON.parse(localStorage.getItem("allOrders"));
   orderDetail.innerHTML = "";
@@ -38,6 +42,8 @@ function updateDisplay() {
   });
 }
 
+
+// template for each order
 function displayTemplate(order) {
   // can also use: ${[...order.toppings, ...order.extras].join(", ")}
   let display = `
@@ -59,6 +65,7 @@ function displayTemplate(order) {
   `;
   return display;
 }
+
 
 // set color for status options
 orderDetail.addEventListener("change", updateStatus);
@@ -83,7 +90,7 @@ function updateStatus(e) {
     // update status to localStorage
     updateLS();
     updateDisplay();
-    // console.log(localStorage.getItem("allOrders"));
+  
   }
 }
 
@@ -102,8 +109,8 @@ function searchOrder(e) {
   });
 }
 
-// sort order by status
 
+// sort order by status
 function sortOrder() {
   console.log(sort.value);
   list.forEach((order) => {
@@ -135,7 +142,7 @@ function removeOrder(e) {
         updateLS();
         //save removed Order to local storage
         localStorage.setItem("removedOrder", JSON.stringify(removedOrder));
-        console.log(localStorage.getItem("removedOrder"));
+        
       }
     });
   }

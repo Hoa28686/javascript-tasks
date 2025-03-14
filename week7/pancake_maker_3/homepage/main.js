@@ -103,12 +103,12 @@ function delivery(e) {
   }
 }
 let id = "";
+const allOrders = [];
 // if(!localStorage.getItem('allOrders')){
 //   localStorage.setItem("allOrders", JSON.stringify(allOrders));
 //     console.log(localStorage.getItem("allOrders"));
 
 // }
-const allOrders = [];
 
 // display template
 function displayOrder(order) {
