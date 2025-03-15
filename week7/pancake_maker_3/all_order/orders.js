@@ -120,7 +120,10 @@ function sortOrder() {
 // Allow removing order when delivered
 
 orderDetail.addEventListener("click", removeOrder);
-let removedOrder = [];
+
+// in case has a page that tracks all removed order
+// let removedOrder = [];
+
 function removeOrder(e) {
   if (e.target.classList.contains("rm")) {
     let closestList = e.target.parentElement;
@@ -130,7 +133,8 @@ function removeOrder(e) {
     orderList.forEach((order) => {
       if (closestList.id == order.id) {
         orderList = orderList.filter((o) => o !== order);
-        removedOrder.push(order);
+        // removedOrder.push(order);
+        
         //update local Storage
         updateLS();
         //save removed Order to local storage
