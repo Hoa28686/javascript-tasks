@@ -66,9 +66,9 @@ label:hover {
   position: absolute;
   left: 20px;
   top: 20px;
-  width:50px;
+  width: 50px;
   height: 50px;
-  font-size:30px;
+  font-size: 30px;
   background: white;
   border-radius: 20px;
 }
@@ -87,6 +87,11 @@ label:hover {
   align-items: center;
   font-size: 40px;
   box-shadow: 1px 1px black;
+  transition: 0.2s;
+}
+
+.price-banner:hover {
+  transform: scale(1.05);
 }
 h2,
 #summaryText {
@@ -105,6 +110,7 @@ input[type="text"] {
   margin-left: 20px;
   line-height: 20px;
   padding: 5px;
+  border-radius: 5px;
 }
 
 label {
@@ -121,6 +127,7 @@ label {
   box-shadow: 1px 1px black;
   min-width: 300px;
 }
+
 select {
   font-size: 15px;
   margin: 5px 30px;
@@ -129,6 +136,7 @@ select {
 }
 
 #button {
+  border-radius: 2px;
   border: 1px solid green;
   display: flex;
   justify-content: space-between;
@@ -139,6 +147,7 @@ select {
 #button button:hover,
 #button a:hover {
   color: green;
+  transform: scale(1.05);
 }
 #button button,
 #button a {
@@ -152,10 +161,26 @@ select {
   text-align: center;
   height: 100%;
   font: bold 1rem "raleway", sans-serif;
+  transition: 0.1s;
 }
 #button button {
   border-right: 1px solid green;
 }
 #button a {
   text-decoration: none;
+}
+
+#see-all {
+  text-decoration: none;
+  font-weight: bold;
+  position: fixed;
+  right: 5px;
+  top: 50px;
+  color: black;
+  border-radius: 5px;
+  background: rgb(113, 203, 61);
+  padding: 5px;
+  width: 80px;
+  text-align: center;
+  box-shadow: 1px 1px 1px grey;
 }
