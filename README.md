@@ -26,5 +26,23 @@
   - [x] pancake
 
 - **week_05:**
+
   - [x] array
-  - [ ] pancake2
+  - [x] pancake2
+
+- **week_06:**
+
+  - [x] little_zoo
+  - [x] object
+
+  - **week_07:**
+
+  - [x] JSON
+  - [x] localStorage
+  - [] Pancake3
+
+  - **week_08:**
+
+  - [x] error-handling
+  - [x] fault-finding
+  - [x] js-writing-pracrices
