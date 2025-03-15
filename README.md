@@ -35,13 +35,13 @@
   - [x] little_zoo
   - [x] object
 
-  - **week_07:**
+- **week_07:**
 
   - [x] JSON
   - [x] localStorage
   - [] Pancake3
 
-  - **week_08:**
+- **week_08:**
 
   - [x] error-handling
   - [x] fault-finding
