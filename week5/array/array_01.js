@@ -62,7 +62,7 @@ console.log(
   teamMembers.includes("John")
 );
 // 18. Check if all names in the array have more than three letters.
-// long way:
+// Method1: long way:
 // let count = 0;
 // teamMembers.push("mia");
 // const checkThreeLetter = () => {
