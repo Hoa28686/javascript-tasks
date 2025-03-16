@@ -39,7 +39,7 @@
 
   - [x] JSON
   - [x] localStorage
-  - [] Pancake3
+  - [x] Pancake3
 
 - **week_08:**
 
