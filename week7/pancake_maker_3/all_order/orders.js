@@ -7,8 +7,12 @@ searchBtn.addEventListener("keyup", searchOrder);
 sort.addEventListener("change", sortOrder);
 updateDisplay();
 
+<<<<<<< HEAD
 
 //update local storage
+=======
+//1. update local storage
+>>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
 const updateLS = () => {
   localStorage.setItem("allOrders", JSON.stringify(orderList));
   // console.log(localStorage.getItem("removedOrder"));
@@ -66,12 +70,15 @@ function displayTemplate(order) {
   return display;
 }
 
+<<<<<<< HEAD
 
 // set color for status options
+=======
+//2.  set color for status options and update status
+>>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
 orderDetail.addEventListener("change", updateStatus);
 
 function updateStatus(e) {
-  e.preventDefault();
   if (e.target.classList.contains("status")) {
     let chosenStatus = e.target.options[e.target.selectedIndex];
 
@@ -90,13 +97,18 @@ function updateStatus(e) {
     // update status to localStorage
     updateLS();
     updateDisplay();
+<<<<<<< HEAD
   
+=======
+    location.reload(); //so the page the sort function(task4) right away
+    // console.log(localStorage.getItem("allOrders"));
+>>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
   }
 }
 
 const list = orderDetail.querySelectorAll("li");
 
-// Search Order by anything
+//3.  Search Order by anything
 function searchOrder(e) {
   let searchText = e.target.value.trim().toLowerCase();
   list.forEach((order) => {
@@ -109,10 +121,14 @@ function searchOrder(e) {
   });
 }
 
+<<<<<<< HEAD
+=======
+// 4. sort order by status
+>>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
 
 // sort order by status
 function sortOrder() {
-  console.log(sort.value);
+  // console.log(sort.value);
   list.forEach((order) => {
     let status = order.querySelector(".status");
     // console.log(status.value);
@@ -124,25 +140,34 @@ function sortOrder() {
   });
 }
 
-// Allow removing order when delivered
+//5. Allow removing order when delivered
 
 orderDetail.addEventListener("click", removeOrder);
-let removedOrder = [];
+
+// let removedOrder = []; // in case user wants to have a page that tracks all removed order
+
 function removeOrder(e) {
   if (e.target.classList.contains("rm")) {
     let closestList = e.target.parentElement;
-    console.log(e.target.parentElement);
+    // console.log(e.target.parentElement);
     orderDetail.removeChild(closestList);
     //update order array
     orderList.forEach((order) => {
       if (closestList.id == order.id) {
         orderList = orderList.filter((o) => o !== order);
-        removedOrder.push(order);
+        // removedOrder.push(order);
+
         //update local Storage
         updateLS();
+
         //save removed Order to local storage
+<<<<<<< HEAD
         localStorage.setItem("removedOrder", JSON.stringify(removedOrder));
         
+=======
+        // localStorage.setItem("removedOrder", JSON.stringify(removedOrder));
+        // console.log(localStorage.getItem("removedOrder"));
+>>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
       }
     });
   }

@@ -80,6 +80,11 @@ li {
   line-height: 1.8;
   position: relative;
   box-shadow: 1px 1px 1px grey;
+  transition: 0.2s;
+}
+
+li:hover {
+  transform: scale(1.02);
 }
 
 .rm {

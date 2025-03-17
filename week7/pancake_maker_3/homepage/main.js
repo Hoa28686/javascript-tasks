@@ -92,6 +92,7 @@ function extra(e) {
 //delivery method
 let deli = new Arr("Eat In", 0);
 function delivery(e) {
+  e.preventDefault();
   if (e.target.className == "delivery") {
     const deliName = e.target.parentElement.textContent
       .split(" (+5€)")[0]
@@ -127,6 +128,7 @@ function displayOrder(order) {
 }
 
 function createOrder(e) {
+  e.preventDefault();
   const order = {
     id: Date.now(),
     customerName: customerName.value.trim(),
@@ -140,7 +142,7 @@ function createOrder(e) {
 
   // display order summary for each customer
   if (e.target.id === "seeOrder") {
-    console.log(order);
+    // console.log(order);
     summaryText.innerHTML = "";
 
     summaryText.innerHTML += displayOrder(order);
