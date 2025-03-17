@@ -7,12 +7,7 @@ searchBtn.addEventListener("keyup", searchOrder);
 sort.addEventListener("change", sortOrder);
 updateDisplay();
 
-<<<<<<< HEAD
-
-//update local storage
-=======
 //1. update local storage
->>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
 const updateLS = () => {
   localStorage.setItem("allOrders", JSON.stringify(orderList));
   // console.log(localStorage.getItem("removedOrder"));
@@ -70,12 +65,7 @@ function displayTemplate(order) {
   return display;
 }
 
-<<<<<<< HEAD
-
-// set color for status options
-=======
 //2.  set color for status options and update status
->>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
 orderDetail.addEventListener("change", updateStatus);
 
 function updateStatus(e) {
@@ -97,12 +87,8 @@ function updateStatus(e) {
     // update status to localStorage
     updateLS();
     updateDisplay();
-<<<<<<< HEAD
-  
-=======
     location.reload(); //so the page the sort function(task4) right away
     // console.log(localStorage.getItem("allOrders"));
->>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
   }
 }
 
@@ -121,12 +107,8 @@ function searchOrder(e) {
   });
 }
 
-<<<<<<< HEAD
-=======
 // 4. sort order by status
->>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
 
-// sort order by status
 function sortOrder() {
   // console.log(sort.value);
   list.forEach((order) => {
@@ -161,13 +143,8 @@ function removeOrder(e) {
         updateLS();
 
         //save removed Order to local storage
-<<<<<<< HEAD
-        localStorage.setItem("removedOrder", JSON.stringify(removedOrder));
-        
-=======
         // localStorage.setItem("removedOrder", JSON.stringify(removedOrder));
         // console.log(localStorage.getItem("removedOrder"));
->>>>>>> 0f732fc688e38e8ce84e029cb54276ac928fe35d
       }
     });
   }
