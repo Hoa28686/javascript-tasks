@@ -127,40 +127,50 @@ If `userExists === true`, **resolve after 2 sec** with `"User profile loaded"`
 If `userExists === false`, **reject after 2 sec** with `"User not found"`  
 */
 
-function getUserProfile(userExists) {
-    return new Promise ((resolve,reject)=>{
-        if(userExists){
-            setTimeout(()=>resolve("User profile loaded"),2000);
-        } else{
-            setTimeout(()=>reject("User not found"),2000);
-        }
-    })
-}
-
-// Test Cases
-getUserProfile(true).then(console.log).catch(console.error);
-// Expected: "User profile loaded" (after 2 sec)
-getUserProfile(false).then(console.log).catch(console.error);
-// Expected: "User not found" (after 2 sec)
-
-
-// /* 
-// Task 7: Fetch User Data (Async/Await)  
-// ---------------------------------------
-// Convert `fetchUserDataAsync(shouldFail)` to use `async/await`  
-// If `shouldFail === false`, wait **2 sec** and return `"User data loaded"`  
-// If `shouldFail === true`, wait **2 sec** and throw `"Failed to fetch data"`  
-// */
-
-// async function fetchUserDataAsync(shouldFail) {
-//     // Your code here
+// function getUserProfile(userExists) {
+//     return new Promise ((resolve,reject)=>{
+//         if(userExists){
+//             setTimeout(()=>resolve("User profile loaded"),2000);
+//         } else{
+//             setTimeout(()=>reject("User not found"),2000);
+//         }
+//     })
 // }
 
 // // Test Cases
+// getUserProfile(true).then(console.log).catch(console.error);
+// // Expected: "User profile loaded" (after 2 sec)
+// getUserProfile(false).then(console.log).catch(console.error);
+// // Expected: "User not found" (after 2 sec)
+
+
+/* 
+Task 7: Fetch User Data (Async/Await)  
+---------------------------------------
+Convert `fetchUserDataAsync(shouldFail)` to use `async/await`  
+If `shouldFail === false`, wait **2 sec** and return `"User data loaded"`  
+If `shouldFail === true`, wait **2 sec** and throw `"Failed to fetch data"`  
+*/
+
+// async function fetchUserDataAsync(shouldFail) {
+//     try{
+//         let promise= Promise((resolve,reject)=>{
+//         if(shouldFail){
+//             setTimeout(() => {
+//                 resolve("User data loaded")
+//             },2000);
+//         }else{
+//             setTimeout(()=>{reject("Failed to fetch data")},2000)
+//         }
+//     })
+//     return promise;
+
+// }
+// Test Cases
 // fetchUserDataAsync(false).then(console.log).catch(console.error);
-// // Expected: "User data loaded" (after 2 sec)
+// Expected: "User data loaded" (after 2 sec)
 // fetchUserDataAsync(true).then(console.log).catch(console.error);
-// // Expected: "Failed to fetch data" (after 2 sec)
+// Expected: "Failed to fetch data" (after 2 sec)
 
 
 // /* 
@@ -194,12 +204,17 @@ getUserProfile(false).then(console.log).catch(console.error);
 // Use **try/catch** to handle errors  
 // */
 
-// async function fetchProductDetails(hasError) {
-//     // Your code here
-// }
+async function fetchProductDetails(hasError) {
+    await new Promise(resolve=>setTimeout(resolve,3000));
+    if (!hasError){
+        return "Product details retrieved";
+    }else{
+        return "Error loading product";
+    }
+}
 
 // // Test Cases
 // fetchProductDetails(false).then(console.log).catch(console.error);
 // // Expected: "Product details retrieved" (after 3 sec)
-// fetchProductDetails(true).then(console.log).catch(console.error);
+fetchProductDetails(true).then(console.log);
 // // Expected: "Error loading product" (after 3 sec)
