@@ -46,3 +46,10 @@
   - [x] error-handling
   - [x] fault-finding
   - [x] js-writing-pracrices
+
+- **week_09:**
+
+  - [x] chaining
+  - [x] destructuring
+  - [x] spread-rest
+  - [ ] async 😭
