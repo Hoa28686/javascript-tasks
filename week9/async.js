@@ -97,13 +97,14 @@ Convert `processOrderPromise()` to return a promise chain:
 
   
 // function processOrderPromise() {
+
 //     return new Promise((resolve)=>setTimeout(()=>resolve("Order received"),2000))
-//         .then((resolveMessage)=>{
-//             console.log(resolveMessage);
+//         .then((result)=>{
+//             console.log(result);
 //             return new Promise((resolve)=>setTimeout(()=>resolve("Preparing order"),3000));
 //         })
-//         .then((resolveMessage)=>{
-//             console.log(resolveMessage);
+//         .then((result)=>{
+//             console.log(result);
 //             return new Promise((resolve)=>setTimeout(()=>resolve("Order ready for pickup"),1000))
 //         })
 
@@ -128,7 +129,7 @@ If `userExists === false`, **reject after 2 sec** with `"User not found"`
 */
 
 // function getUserProfile(userExists) {
-//     return new Promise ((resolve,reject)=>{
+//     return new Promise ((resolve)=>{
 //         if(userExists){
 //             setTimeout(()=>resolve("User profile loaded"),2000);
 //         } else{

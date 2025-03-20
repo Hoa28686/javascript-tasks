@@ -119,7 +119,7 @@ label {
 }
 
 #pancakeForm {
-  border: solid 2pxrgb (223, 250, 227);
+  border: solid 2px rgb (223, 250, 227);
   margin-right: 40px;
   background-color: rgb(223, 250, 227);
   padding: 20px;
@@ -154,6 +154,7 @@ select {
   flex: 1;
   border: none;
   background: white;
+  color:black;
   outline: none;
   display: flex;
   align-items: center;
