@@ -159,6 +159,10 @@ function createOrder(e) {
 
     //clear form
     pancakeForm.reset();
+    type = "Classic";
+    toppingArr = [];
+    extraArr = [];
+    deli = new Arr("Eat In", 0);
   }
 }
 
