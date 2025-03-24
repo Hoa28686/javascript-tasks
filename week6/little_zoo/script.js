@@ -70,21 +70,8 @@ function filterAnimal() {
 }
 
 //5. search animals
-// search.addEventListener('keyup', searchAnimal);
-// function searchAnimal(){
-//     let searchText=search.value.trim().toLowerCase();
-//     const  lists=document.querySelectorAll('li');
-//     lists.forEach(i=>{
-//         const liItems=i.textContent.toLowerCase();
-//         if(liItems.includes(searchText)){
-//             i.style.display='block';
-//         }else{
-//             i.style.display='none';
-//         }
-//     })
-// }
 
-// Method2: use filter to create new function
+// use filter to create new function
 search.addEventListener("keyup", searchAnimal);
 
 function searchAnimal() {
@@ -102,23 +89,11 @@ function searchAnimal() {
 // 6. remove animal from the list, but the zoo will has it back when page refreshes
 ul.addEventListener("click", removeAnimal);
 
-// function removeAnimal(e) {
-//   if (e.target.classList.contains("remove-btn")) {
-//     let li = e.target.parentElement;
-//     ul.removeChild(e.target.parentElement);
-//   }
-// }
-
 function removeAnimal(e) {
   e.preventDefault();
   if (e.target.classList.contains("remove-btn")) {
     let li = e.target.parentElement;
 
-    // method1: use index
-    // const index=animals.findIndex(a => li.textContent.includes(`${a.name} - ${a.type}`));
-    // animals.splice(index,1);
-
-    // method2:use filter
     animals = animals.filter(
       (a) => !li.textContent.includes(`${a.name} - ${a.type}`)
     );
@@ -131,6 +106,5 @@ function removeAnimal(e) {
 sortBtn.addEventListener("click", sortAnimals);
 function sortAnimals() {
   animals.sort((a1, a2) => (a1.name < a2.name ? -1 : 1));
-  // animals.sort((a1,a2)=>(a1.name<a2.name)? -1:((a1.name>a2.name)?1:0));
   display(animals);
 }

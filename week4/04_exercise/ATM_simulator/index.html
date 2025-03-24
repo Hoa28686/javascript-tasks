@@ -11,10 +11,20 @@
 
     <section>
       <h2 id="balance" onload="checkBalance()">User's balance:</h2>
-      <input id="deposit" type="number" placeholder="Enter deposit amount" />
+      <input
+        id="deposit"
+        type="number"
+        min="0"
+        placeholder="Enter deposit amount"
+      />
       <button id="depoBtn" class="button">Deposit money</button>
       <br />
-      <input id="withdraw" type="number" placeholder="Enter withdraw amount" />
+      <input
+        id="withdraw"
+        type="number"
+        min="0"
+        placeholder="Enter withdraw amount"
+      />
       <button id="withBtn" class="button">Withdraw money</button>
       <p id="error"></p>
     </section>

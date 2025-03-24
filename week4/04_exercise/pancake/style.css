@@ -8,7 +8,6 @@ body {
   align-items: center;
   margin: 0;
   min-height: 100vh;
-  overflow: hidden;
   font-family: "raleway", "Segoe UI", "Segoe UI Emoji", Tahoma, Geneva, Verdana,
     sans-serif;
 }
@@ -43,7 +42,7 @@ label:hover {
   min-height: 100vh;
   overflow-y: auto;
   width: 50vw;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .price-banner {
@@ -61,7 +60,6 @@ label:hover {
   align-items: center;
   font-size: 30px;
   box-shadow: #000000;
-  overflow: hidden;
 }
 h2 {
   margin-top: 15px;
@@ -86,7 +84,7 @@ label {
   padding: 10px 15px;
 }
 select {
-  font-size: 20px;
+  font-size: 16px;
   padding: 5px;
   border-radius: 5px;
 }
@@ -96,6 +94,6 @@ select {
 }
 @keyframes bigger {
   50% {
-    font-size: 40px;
+    font-size: 30px;
   }
 }

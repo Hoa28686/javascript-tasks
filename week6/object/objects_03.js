@@ -160,7 +160,6 @@ Use `fetch` to get weather data from an API and display it in an HTML element.
 (API: OpenWeather or any free weather API)
 */
 
-// Note: try to use fetch + try catch + async await next time 
 console.log("7.");
 const weatherApp = {
   fetchWeather: function (city) {

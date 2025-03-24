@@ -1,5 +1,5 @@
 function magic8Ball(){
-    let question = prompt('Ask a yes or no quesstion: ');
+    let question = prompt('Ask a yes or no question: ');
     console.log(`You asked: ${question}`);
     alert(`The answer is ${answer()}`);
 }

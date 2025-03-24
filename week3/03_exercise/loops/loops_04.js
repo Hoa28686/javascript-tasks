@@ -4,7 +4,10 @@ Write a function named countEvenNumbers:
 - After all numbers are entered, log how many of them were even.
 Display the result in the console. 
 */
+
 const prompt=require('prompt-sync')();
+
+
 const countEvenNumbers = () => {
     console.log('Enter 20 numbers one by one');
     let even = '';
