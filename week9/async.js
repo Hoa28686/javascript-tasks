@@ -129,7 +129,7 @@ If `userExists === false`, **reject after 2 sec** with `"User not found"`
 */
 
 // function getUserProfile(userExists) {
-//     return new Promise ((resolve)=>{
+//     return new Promise ((resolve,reject)=>{
 //         if(userExists){
 //             setTimeout(()=>resolve("User profile loaded"),2000);
 //         } else{
@@ -154,19 +154,14 @@ If `shouldFail === true`, wait **2 sec** and throw `"Failed to fetch data"`
 */
 
 // async function fetchUserDataAsync(shouldFail) {
-//     try{
-//         let promise= Promise((resolve,reject)=>{
-//         if(shouldFail){
-//             setTimeout(() => {
-//                 resolve("User data loaded")
-//             },2000);
-//         }else{
-//             setTimeout(()=>{reject("Failed to fetch data")},2000)
-//         }
+//     return await new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//         (shouldFail)?reject("Failed to fetch data"):resolve("User data loaded")
+//         },2000);
 //     })
-//     return promise;
-
 // }
+    
+
 // Test Cases
 // fetchUserDataAsync(false).then(console.log).catch(console.error);
 // Expected: "User data loaded" (after 2 sec)
@@ -184,7 +179,15 @@ If `shouldFail === true`, wait **2 sec** and throw `"Failed to fetch data"`
 // */
 
 // async function checkoutCart() {
-//     // Your code here
+//     await new Promise((resolve) => setTimeout(resolve, 1000));
+//     console.log("Checking stock...");
+
+//     await new Promise((resolve) => setTimeout(resolve, 2000));
+//     console.log("Payment processed");
+
+//     await new Promise((resolve) => setTimeout(resolve, 1000));
+//     console.log("Order completed!");
+
 // }
 
 // // Test Case
@@ -205,13 +208,24 @@ If `shouldFail === true`, wait **2 sec** and throw `"Failed to fetch data"`
 // Use **try/catch** to handle errors  
 // */
 
+// async function fetchUserDataAsync(shouldFail) {
+//     await new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//         (shouldFail)?reject("Failed to fetch data"):resolve("User data loaded")
+//         },2000);
+//     })
+// }
 async function fetchProductDetails(hasError) {
-    await new Promise(resolve=>setTimeout(resolve,3000));
-    if (!hasError){
-        return "Product details retrieved";
-    }else{
-        return "Error loading product";
-    }
+    try{
+        await new Promise((resolve)=> setTimeout(resolve, 3000));
+        if(!hasError){
+            return ("Product details retrieved");
+        }else{
+            throw new Error("Error loading product") ;
+        }
+    }catch(error){
+        throw error;
+    }  
 }
 
 // // Test Cases
