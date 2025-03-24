@@ -153,19 +153,22 @@ If `shouldFail === false`, wait **2 sec** and return `"User data loaded"`
 If `shouldFail === true`, wait **2 sec** and throw `"Failed to fetch data"`  
 */
 
-// async function fetchUserDataAsync(shouldFail) {
-//     return await new Promise((resolve,reject)=>{
-//         setTimeout(()=>{
-//         (shouldFail)?reject("Failed to fetch data"):resolve("User data loaded")
-//         },2000);
-//     })
-// }
+async function fetchUserDataAsync(shouldFail) {
+    try{
+        return await new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+        (shouldFail)?reject("Failed to fetch data"):resolve("User data loaded")
+        },2000);
+    })}catch(error){
+        return error;
+    }
+}
     
 
 // Test Cases
 // fetchUserDataAsync(false).then(console.log).catch(console.error);
 // Expected: "User data loaded" (after 2 sec)
-// fetchUserDataAsync(true).then(console.log).catch(console.error);
+fetchUserDataAsync(true).then(console.log).catch(console.error);
 // Expected: "Failed to fetch data" (after 2 sec)
 
 
@@ -208,28 +211,21 @@ If `shouldFail === true`, wait **2 sec** and throw `"Failed to fetch data"`
 // Use **try/catch** to handle errors  
 // */
 
-// async function fetchUserDataAsync(shouldFail) {
-//     await new Promise((resolve,reject)=>{
-//         setTimeout(()=>{
-//         (shouldFail)?reject("Failed to fetch data"):resolve("User data loaded")
-//         },2000);
-//     })
+// async function fetchProductDetails(hasError) {
+//     try{
+//         await new Promise((resolve)=> setTimeout(resolve, 3000));
+//         if(!hasError){
+//             return ("Product details retrieved");
+//         }else{
+//             throw new Error("Error loading product") ;
+//         }
+//     }catch(error){
+//         return error.message;
+//     }  
 // }
-async function fetchProductDetails(hasError) {
-    try{
-        await new Promise((resolve)=> setTimeout(resolve, 3000));
-        if(!hasError){
-            return ("Product details retrieved");
-        }else{
-            throw new Error("Error loading product") ;
-        }
-    }catch(error){
-        throw error;
-    }  
-}
 
 // // Test Cases
 // fetchProductDetails(false).then(console.log).catch(console.error);
 // // Expected: "Product details retrieved" (after 3 sec)
-fetchProductDetails(true).then(console.log);
+// fetchProductDetails(true).then(console.log);
 // // Expected: "Error loading product" (after 3 sec)
