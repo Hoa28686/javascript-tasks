@@ -52,4 +52,4 @@
   - [x] chaining
   - [x] destructuring
   - [x] spread-rest
-  - [ ] async 😭
+  - [x] async 
