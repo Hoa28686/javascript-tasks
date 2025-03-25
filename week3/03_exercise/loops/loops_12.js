@@ -4,7 +4,9 @@ Write a function named buildGroceryList:
 - Stop when the user types "done".
 Log the complete grocery list in the console.
  */
-const prompt=require('prompt-sync')();
+
+
+
 const buildGroceryList=()=>{
     let input;
     let array=[];

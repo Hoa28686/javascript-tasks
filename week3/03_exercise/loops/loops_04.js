@@ -5,8 +5,6 @@ Write a function named countEvenNumbers:
 Display the result in the console. 
 */
 
-const prompt=require('prompt-sync')();
-
 
 const countEvenNumbers = () => {
     console.log('Enter 20 numbers one by one');

@@ -4,7 +4,6 @@ Write a function named calculateAverageUntilZero:
 - Stop asking for inputs when the user enters 0.
 - Calculate and log the average of all entered numbers in the console once the loop ends.
  */
-const prompt=require('prompt-sync')();
 
 const calculateAverageUntilZero = () => {
     let input;

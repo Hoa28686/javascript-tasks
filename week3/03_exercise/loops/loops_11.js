@@ -10,7 +10,7 @@ Example for 5:
 5 x 10 = 50
  */
 
-const prompt=require('prompt-sync')();
+
 
 const generateMultiplicationTable=()=>{
     let num = Number(prompt('Enter a integer number: '));

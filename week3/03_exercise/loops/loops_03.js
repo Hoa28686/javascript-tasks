@@ -5,7 +5,7 @@ Write a function named calculateAverageSpeed:
 - Stop asking for inputs when the user enters 0 for distance. 
 */
 
-const prompt=require('prompt-sync')();
+
 const calculateAverageSpeed = () => {
     let distance;
     while (distance != 0){

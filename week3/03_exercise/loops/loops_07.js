@@ -7,7 +7,7 @@ Write a function named sumAndAverage:
     - The smallest and largest numbers.
 Display all results in the console.
 */
-const prompt=require('prompt-sync')();
+
 
 const sumAndAverage =() =>{
     let array_num= [];

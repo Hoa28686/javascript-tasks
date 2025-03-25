@@ -8,7 +8,7 @@ Write a function named createWordPyramid:
     cod
     code
  */
-const prompt=require('prompt-sync')();
+
 
 const createWordPyramid=() =>{
     let word = prompt('Enter a word: ');

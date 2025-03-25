@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pancake Maker 3</title>
+    <link rel="icon" href="data:," />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-container">
+        <img src="pancake.jpg" alt="pancake image" />
+        <div class="price-banner"><span id="totalPrice">5€</span></div>
+      </div>
+
+      <div class="form-container">
+        <h2>Customize Your Pancake</h2>
+
+        <form id="pancakeForm">
+          <!-- Customer Name -->
+          <label for="customerName">Your Name:</label>
+          <input type="text" id="customerName" placeholder="Enter your name" />
+
+          <!-- Pancake Type -->
+          <label for="type">Choose your pancake type:</label>
+          <select id="type">
+            <option data-price="5">Classic 🥞 - 5€</option>
+            <option data-price="6">Chocolate 🍫 - 6€</option>
+            <option data-price="7">Blueberry 🫐- 7€</option>
+          </select>
+
+          <!-- Toppings -->
+          <h3>Select your toppings (1€ each):</h3>
+          <label
+            ><input type="checkbox" class="topping" data-price="1" /> Nuts 🥜
+          </label>
+          <label
+            ><input type="checkbox" class="topping" data-price="1" /> Bananas
+            🍌🍓
+          </label>
+          <label
+            ><input type="checkbox" class="topping" data-price="1" /> Syrup 🍯
+          </label>
+
+          <!-- Extras -->
+          <h3>Add extras 🧁:</h3>
+          <label
+            ><input type="checkbox" class="extra" data-price="2" /> Whipped
+            Cream - 2€</label
+          >
+
+          <label
+            ><input type="checkbox" class="extra" data-price="3" /> Ice Cream -
+            3€</label
+          >
+
+          <!-- Delivery Method -->
+          <h3>Choose delivery method:</h3>
+          <label
+            ><input
+              type="radio"
+              name="delivery"
+              class="delivery"
+              data-price="0"
+              checked
+            />Eat In</label
+          >
+          <label
+            ><input
+              type="radio"
+              name="delivery"
+              class="delivery"
+              data-price="0"
+            />Pick Up</label
+          >
+          <label
+            ><input
+              type="radio"
+              name="delivery"
+              class="delivery"
+              data-price="5"
+            />Delivery (+5€)</label
+          >
+
+          <!-- Total Price Display -->
+          <h3>Total Price: <span id="totalPriceDisplay">5€</span></h3>
+          <div id="button">
+            <!-- See Order Button -->
+            <button type="button" id="seeOrder">See Order</button>
+            <button type="button" id="confirmOrder">Confirm Order</button>
+
+            <!-- All orders -->
+            <a href="/orders.html" target="_blank">See all orders</a>
+          </div>
+        </form>
+
+        <!-- Order Summary Display -->
+        <div id="orderSummary">
+          <h3>Order Summary</h3>
+          <p id="summaryText">Your order details will appear here.</p>
+        </div>
+      </div>
+    </div>
+    <a id="see-all" href="orders.html" target="_blank">See all orders</a>
+    <script src="main.js"></script>
+  </body>
+</html>
