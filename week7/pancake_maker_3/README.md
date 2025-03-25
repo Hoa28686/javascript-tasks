@@ -1,4 +1,6 @@
-## Pancake Maker is an application that allows users to customize their pancakes, and manage pancake orders 
+## Pancake Maker
+
+Pancake Maker is an application that allows users to customize their pancakes, and manage pancake orders 
 
 **Working features:**
 
